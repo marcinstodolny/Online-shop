@@ -9,26 +9,30 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Services;
+using Data;
 
 namespace Codecool.CodecoolShop.Controllers
 {
     public class ProductController : Controller
     {
         private readonly ILogger<ProductController> _logger;
-        public ProductService ProductService { get; set; }
+        private CodecoolshopContext _context;
+        //public ProductService ProductService { get; set; }
 
-        public ProductController(ILogger<ProductController> logger)
+        public ProductController(ILogger<ProductController> logger, CodecoolshopContext context)
         {
             _logger = logger;
-            ProductService = new ProductService(
-                ProductDaoMemory.GetInstance(),
-                ProductCategoryDaoMemory.GetInstance());
+            _context = context;
+            //ProductService = new ProductService(
+            //    ProductDaoMemory.GetInstance(),
+            //    ProductCategoryDaoMemory.GetInstance());
         }
 
         public IActionResult Index()
         {
-            var products = ProductService.GetProductsForCategory(1);
-            return View(products.ToList());
+            //var products = ProductService.GetProductsForCategory(1);
+            var pr = _context.Products.ToList();
+            return View(pr);
         }
 
         public IActionResult Privacy()
