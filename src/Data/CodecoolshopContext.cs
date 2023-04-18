@@ -31,7 +31,9 @@ namespace Data
         {
             // modelBuilder.Entity<Employee>().Property(x => x.FirstName).IsRequired().HasColumnType("varchar(60)");
             //modelBuilder.Entity<Employee>().HasData();
-
+            modelBuilder.Entity<Product>()
+                .Property(p => p.DefaultPrice)
+                .HasColumnType("decimal(18,2)");
             base.OnModelCreating(modelBuilder);
         }
     }
