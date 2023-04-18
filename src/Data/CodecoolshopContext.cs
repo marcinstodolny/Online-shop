@@ -7,8 +7,8 @@ namespace Data
     public class CodecoolshopContext : DbContext
     {
         private const string ConnectionString = "Data Source=localhost;Database=Codecoolshop;Trust Server Certificate=true;MultipleActiveResultSets=true;Integrated Security=true";
-        public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
         public CodecoolshopContext(DbContextOptions options) : base(options)
         {

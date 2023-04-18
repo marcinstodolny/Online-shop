@@ -31,6 +31,7 @@ namespace Codecool.CodecoolShop.Controllers
         public IActionResult Index()
         {
             //var products = ProductService.GetProductsForCategory(1);
+            _logger.LogInformation("Opened index page");
             var pr = _context.Products.ToList();
             return View(pr);
         }
