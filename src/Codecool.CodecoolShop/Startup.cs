@@ -31,7 +31,7 @@ namespace Codecool.CodecoolShop
             services.AddControllersWithViews();
             services.AddDbContext<CodecoolshopContext>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("CodecoolShopConnectionString")));
-            services.AddSingleton(Configuration);
+            //services.AddSingleton(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
