@@ -36,6 +36,8 @@ namespace Codecool.CodecoolShop.Controllers
             //var products = ProductService.GetProductsForCategory(1);
             _logger.LogInformation("Opened index page");
             var pr = _context.Products.ToList();
+            var prCat = _context.ProductCategories.ToList();
+            var sup = _context.Suppliers.ToList();
             return View(pr);
         }
 
