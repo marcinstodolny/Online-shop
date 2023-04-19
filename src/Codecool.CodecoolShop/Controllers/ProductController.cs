@@ -19,16 +19,16 @@ namespace Codecool.CodecoolShop.Controllers
     {
         private readonly ILogger<ProductController> _logger;
         private CodecoolshopContext _context;
-        //public ProductService ProductService { get; set; }
-
-        public ProductController(ILogger<ProductController> logger, CodecoolshopContext context)
+        private IProductServiceSql _productServiceSql;
+        public ProductController(ILogger<ProductController> logger, IProductServiceSql productServiceSql)
         {
             _logger = logger;
-            _context = context;
             //ProductService = new ProductService(
             //    ProductDaoMemory.GetInstance(),
             //    ProductCategoryDaoMemory.GetInstance());
-            context.IfDbEmptyAddNewItems(context);
+            _productServiceSql = productServiceSql;
+            _context = _productServiceSql.GetContext();
+            _context.IfDbEmptyAddNewItems(_context);
         }
 
         public IActionResult Index()
@@ -36,8 +36,8 @@ namespace Codecool.CodecoolShop.Controllers
             //var products = ProductService.GetProductsForCategory(1);
             _logger.LogInformation("Opened index page");
             var pr = _context.Products.ToList();
-            var prCat = _context.ProductCategories.ToList();
-            var sup = _context.Suppliers.ToList();
+            _context.ProductCategories.ToList();
+            _context.Suppliers.ToList();
             return View(pr);
         }
 
