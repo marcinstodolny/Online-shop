@@ -11,6 +11,8 @@ using Microsoft.Extensions.Logging;
 using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Services;
 using Data;
+using Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace Codecool.CodecoolShop.Controllers
 {
@@ -30,6 +32,7 @@ namespace Codecool.CodecoolShop.Controllers
             //ProductService = new ProductService(
             //    ProductDaoMemory.GetInstance(),
             //    ProductCategoryDaoMemory.GetInstance());
+            context.IfDbEmptyAddNewItems(context);
         }
 
         public IActionResult Index()

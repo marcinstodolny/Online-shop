@@ -35,7 +35,7 @@ namespace Codecool.CodecoolShop.Daos.Implementations
         public IEnumerable<Product> GetAllProductsBy(Cart cart)
         {
             
-            return data.Where(item => item.Id == cart.Id).SelectMany(item => item.Products.Select(product => product));
+            return data.Where(item => item.Id == cart.Id).SelectMany(item => item.Products);
         }
 
         //public IEnumerable<Cart> GetBy(Supplier supplier)
