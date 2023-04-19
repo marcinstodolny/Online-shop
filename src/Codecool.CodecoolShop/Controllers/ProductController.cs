@@ -12,32 +12,32 @@ using Codecool.CodecoolShop.Services;
 using Data;
 using Domain;
 using Microsoft.EntityFrameworkCore;
+using Product = Domain.Product;
 
 namespace Codecool.CodecoolShop.Controllers
 {
     public class ProductController : Controller
     {
         private readonly ILogger<ProductController> _logger;
-        private CodecoolshopContext _context;
-        private IProductServiceSql _productServiceSql;
-        public ProductController(ILogger<ProductController> logger, IProductServiceSql productServiceSql)
+        private IProductService _productService;
+        public ProductController(ILogger<ProductController> logger, IProductService productService)
         {
             _logger = logger;
             //ProductService = new ProductService(
             //    ProductDaoMemory.GetInstance(),
             //    ProductCategoryDaoMemory.GetInstance());
-            _productServiceSql = productServiceSql;
-            _context = _productServiceSql.GetContext();
-            _context.IfDbEmptyAddNewItems(_context);
+            _productService = productService;
         }
 
         public IActionResult Index()
         {
             //var products = ProductService.GetProductsForCategory(1);
             _logger.LogInformation("Opened index page");
-            var pr = _context.Products.ToList();
-            _context.ProductCategories.ToList();
-            _context.Suppliers.ToList();
+            var pr = _productService.GetAllProducts();
+            _productService.GetProductCategories();
+            _productService.GetSuppliers();
+            //_context.ProductCategories.ToList();
+            //_context.Suppliers.ToList();
             return View(pr);
         }
 
