@@ -1,18 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using ASP;
 using Codecool.CodecoolShop.Daos;
-using Codecool.CodecoolShop.Daos.Implementations;
+using Codecool.CodecoolShop.Models;
+using Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Codecool.CodecoolShop.Models;
-using Codecool.CodecoolShop.Services;
-using Data;
-using Domain;
-using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
+using System.Linq;
 
 namespace Codecool.CodecoolShop.Controllers
 {
@@ -21,14 +13,12 @@ namespace Codecool.CodecoolShop.Controllers
         private readonly ILogger<ProductController> _logger;
         private CodecoolshopContext _context;
 
-        private IProductCategoryDao _product;
         //public ProductService ProductService { get; set; }
 
-        public ProductController(ILogger<ProductController> logger, CodecoolshopContext context, IProductCategoryDao product)
+        public ProductController(ILogger<ProductController> logger, CodecoolshopContext context)
         {
             _logger = logger;
             _context = context;
-            _product = product;
             //ProductService = new ProductService(
             //    ProductDaoMemory.GetInstance(),
             //    ProductCategoryDaoMemory.GetInstance());

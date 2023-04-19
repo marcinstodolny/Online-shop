@@ -32,11 +32,11 @@ namespace Codecool.CodecoolShop.Daos.Implementations
         {
             return data;
         }
-        public IEnumerable<Product> GetAllProductsBy(Cart cart)
-        {
+        //public IEnumerable<Domain.Product> GetAllItemsBy(Cart cart)
+        //{
             
-            return data.Where(item => item.Id == cart.Id).SelectMany(item => item.Products);
-        }
+        //    return data.Where(item => item.Id == cart.Id).SelectMany(item => item.Items).Select(item => item.Product);
+        //}
 
         //public IEnumerable<Cart> GetBy(Supplier supplier)
         //{
