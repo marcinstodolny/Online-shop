@@ -51,12 +51,12 @@ namespace Data
                 var lenovo = new Supplier { Name = "Lenovo", Description = "Computers" };
                 context.Suppliers.Add(amazon);
                 context.Suppliers.Add(lenovo);
-                var tablet = new Domain.ProductCategory { Name = "Tablet", Department = "Hardware", Description = "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display." };
+                var tablet = new ProductCategory { Name = "Tablet", Department = "Hardware", Description = "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display." };
                 context.ProductCategories.Add(tablet);
 
                 // Add products conditionally
 
-                var amazonFire = new Domain.Product
+                var amazonFire = new Product
                 {
                     Name = "Amazon Fire",
                     DefaultPrice = 49.9m,
@@ -66,7 +66,7 @@ namespace Data
                     ProductCategory = tablet,
                     Supplier = amazon
                 };
-                var lenovoIdeaPad = new Domain.Product
+                var lenovoIdeaPad = new Product
                 {
                     Name = "Lenovo IdeaPad Miix 700",
                     DefaultPrice = 479.0m,
@@ -76,7 +76,7 @@ namespace Data
                     ProductCategory = tablet,
                     Supplier = lenovo
                 };
-                var amazonFireHd = new Domain.Product
+                var amazonFireHd = new Product
                 {
                     Name = "Amazon Fire HD 8",
                     DefaultPrice = 89.0m,
