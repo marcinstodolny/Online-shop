@@ -73,6 +73,24 @@ namespace Codecool.CodecoolShop.Controllers
             return RedirectToAction("Index");
         }
 
+        [Route("update/{id}/{quantity}")]
+        public IActionResult Update(string id,string quantity)
+        {
+            var cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart");
+            var index = IsExist(id, cart);
+            var isItInt = int.TryParse(quantity, out var result);
+            if (result <= 0)
+            {
+                return Remove(id);
+            }
+            if (index != -1 && isItInt)
+            {
+                cart[index].Quantity = result;
+            }
+            HttpContext.Session.SetObjectAsJson("cart", cart);
+            return RedirectToAction("Index");
+        }
+
         private int IsExist(string id, List<Item> cart)
         {
             for (var i = 0; i < cart.Count; i++)
@@ -84,6 +102,12 @@ namespace Codecool.CodecoolShop.Controllers
                 }
             }
             return -1;
+        }
+        [HttpPost]
+        public IActionResult InputQuantity(string id)
+        {
+            var quantity = Request.Form["quantity"].First();
+            return Update(id, quantity);
         }
     }
     //public class CartController : Controller
