@@ -73,25 +73,19 @@ namespace Codecool.CodecoolShop.Controllers
             return RedirectToAction("Index");
         }
 
-        [Route("update/{operation}/{id}")]
-        public IActionResult Update(string operation, string id)
+        [Route("update/{id}/{quantity}")]
+        public IActionResult Update(string id,string quantity)
         {
             var cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart");
             var index = IsExist(id, cart);
-            if (index != -1)
+            var isItInt = int.TryParse(quantity, out var result);
+            if (result <= 0)
             {
-                switch (operation)
-                {
-                    case "subtract":
-                        if (cart[index].Quantity > 1)
-                        {
-                            cart[index].Quantity--;
-                        }
-                        break;
-                    case "add":
-                        cart[index].Quantity++;
-                        break;
-                }
+                return Remove(id);
+            }
+            if (index != -1 && isItInt)
+            {
+                cart[index].Quantity = result;
             }
             HttpContext.Session.SetObjectAsJson("cart", cart);
             return RedirectToAction("Index");

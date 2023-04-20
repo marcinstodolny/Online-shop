@@ -1,4 +1,5 @@
 @using System.Globalization
+@using System.Reflection.Metadata
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Home Page";
@@ -30,11 +31,12 @@
                             }
                             else
                             {
-                                <a asp-controller="cart" asp-action="Update" asp-route-id="@element.Product.Id", asp-route-operation="subtract" type="button" class="btn btn-primary">-</a> 
+                                <a asp-controller="cart" asp-action="update" asp-route-id="@element.Product.Id" asp-route-quantity="@(ViewBag.quantity - 1)" type="button" class="btn btn-primary">-</a> 
                             }
-                                }
+                        }
+                        @*<input type="number" value="@ViewBag.quantity" asp-controller="cart" asp-action="update" asp-route-id="@element.Product.Id", asp-route-quantity="@(ViewBag.quantity - 1)"/>*@
                         Quantity: @element.Quantity
-                        <a asp-controller="cart" asp-action="Update" asp-route-id="@element.Product.Id", asp-route-operation="add" type="button" class="btn btn-primary">+</a>
+                        <a asp-controller="cart" asp-action="update" asp-route-id="@element.Product.Id" asp-route-quantity="@(ViewBag.quantity + 1)" type="button" class="btn btn-primary">+</a>
                     </strong></p>
                     <a asp-controller="cart" asp-action="Remove" asp-route-id="@element.Product.Id" type="button" class="btn btn-primary">Remove</a>
                 </div>
