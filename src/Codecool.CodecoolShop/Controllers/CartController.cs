@@ -103,6 +103,12 @@ namespace Codecool.CodecoolShop.Controllers
             }
             return -1;
         }
+        [HttpPost]
+        public IActionResult InputQuantity(string id)
+        {
+            var quantity = Request.Form["quantity"].First();
+            return Update(id, quantity);
+        }
     }
     //public class CartController : Controller
     //{
