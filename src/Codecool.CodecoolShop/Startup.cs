@@ -14,17 +14,31 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Serilog;
+using ILogger = Serilog.ILogger;
 
 namespace Codecool.CodecoolShop
 {
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.Console()
+                .WriteTo.File("log.txt")
+                .CreateLogger();
+
+            Log.Information("Inside Startup ctor");
         }
 
         public IConfiguration Configuration { get; }
+
+
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -54,7 +68,10 @@ namespace Codecool.CodecoolShop
             app.UseHttpsRedirection();
             app.UseSession();
             app.UseStaticFiles();
-            
+
+
+            app.UseSerilogRequestLogging();          
+
             app.UseRouting();
 
             app.UseAuthorization();

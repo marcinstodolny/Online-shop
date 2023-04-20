@@ -1,3 +1,5 @@
+@using System.Globalization
+
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -7,47 +9,61 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            <h3>Categories</h3>
-            <ul>
-                <li><a href="@Url.Action("Index", "Product")">Show All</a></li>
-                @foreach (var category in ViewBag.Categories as List<Domain.ProductCategory>)
-                {
-                    <li><a href="@Url.Action("Index", "Product", new { categoryId = category.Id })">@category.Department</a></li>
-                }
-            </ul>
-            <h3>Suppliers</h3>
-            <ul>
-                <li><a href="@Url.Action("Index", "Product")">Show All</a></li>
-                @foreach (var supplier in ViewBag.Suppliers as List<Domain.Supplier>)
-                {
-                    <li><a href="@Url.Action("Index", "Product", new { supplierId = supplier.Id })">@supplier.Name</a></li>
-                }
-            </ul>
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">Categories</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a href="@Url.Action("Index", "Product", new { categoryId = "", supplierId = ViewBag.SelectedSupplierId })">Show All</a></li>
+                        @foreach (var category in ViewBag.Categories as List<Domain.ProductCategory>)
+                        {
+                            <li class="list-group-item">
+                                <a href="@Url.Action("Index", "Product", new { categoryId = category.Id, supplierId = ViewBag.SelectedSupplierId })"
+                                   class="@(ViewBag.SelectedCategoryId == category.Id ? "font-weight-bold" : "")">
+                                    @category.Name
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h3 class="card-title">Suppliers</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a href="@Url.Action("Index", "Product", new { categoryId = ViewBag.SelectedCategoryId, supplierId = "" })">Show All</a></li>
+                        @foreach (var supplier in ViewBag.Suppliers as List<Domain.Supplier>)
+                        {
+                            <li class="list-group-item">
+                                <a href="@Url.Action("Index", "Product", new { categoryId = ViewBag.SelectedCategoryId, supplierId = supplier.Id })"
+                                   class="@(ViewBag.SelectedSupplierId == supplier.Id ? "font-weight-bold" : "")">
+                                    @supplier.Name
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div>
-            @foreach (var element in Model)
-            {
-                <div class="col-lg-3 col-lg-3" style="display: inline-block; max-width: 350px; height: 350px">
-                    <div class="card">
-                        <img src="img/@(element.Name).jpg" style="height: 50%; width: 50%; align-self: center; padding-top: 10px">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">
-                                Product
-                                @{
-                                    var num = Model.IndexOf(element) + 1;
-                                }
-                                @num
-                            </h5>
-                            <h5 class="card-title">@element.Name</h5>
-                            <p class="card-text">@element.Description.</p>
-                            <p class="card-text">Category: @element.ProductCategory.Department</p>
-                            <p class="card-text">Supplier: @element.Supplier.Name</p>
-                            <p class="card-text text-center"><strong>Price: @element.DefaultPrice.ToString("C2")</strong></p>
-                            <a asp-controller="cart" asp-action="buy" asp-route-id="@element.Id" type="button" class="btn btn-primary">Add To Cart</a>
+        <div class="col-md-9">
+            <div class="row">
+                @foreach (var element in Model)
+                {
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card h-100">
+                            <img src="img/@(element.Name).jpg" style="height: 50%; width: 50%; align-self: center; padding-top: 10px">
+
+                            <div class="card-body">
+                                <h5 class="card-title text-center">@element.Name</h5>
+                                <p class="card-text">@element.Description.</p>
+                                <p class="card-text">Category: @element.ProductCategory.Name</p>
+                                <p class="card-text">Supplier: @element.Supplier.Name</p>
+                                <p class="card-text text-center"><strong>Price: @element.DefaultPrice.ToString("C2", new CultureInfo("en-US"))</strong></p>
+                                <a asp-controller="cart" asp-action="buy" asp-route-id="@element.Id" type="button" class="btn btn-primary">Add To Cart</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
         </div>
     </div>
 </div>

@@ -28,22 +28,44 @@ namespace Codecool.CodecoolShop.Controllers
             //    ProductCategoryDaoMemory.GetInstance());
             _productService = productService;
         }
-
         public IActionResult Index(int? categoryId, int? supplierId)
         {
-            _logger.LogInformation("Opened index page");
-
-            var products = categoryId.HasValue
-                ? _productService.GetProductsByCategory(categoryId.Value)
-                : supplierId.HasValue
-                    ? _productService.GetProductsBySupplier(supplierId.Value)
-                    : _productService.GetAllProducts();
-
             ViewBag.Categories = _productService.GetProductCategories();
             ViewBag.Suppliers = _productService.GetSuppliers();
+            ViewBag.SelectedCategoryId = categoryId;
+            ViewBag.SelectedSupplierId = supplierId;
+
+            var products = _productService.GetAllProducts();
+
+            if (categoryId.HasValue)
+            {
+                products = products.Where(p => p.ProductCategory.Id == categoryId.Value).ToList();
+            }
+
+            if (supplierId.HasValue)
+            {
+                products = products.Where(p => p.Supplier.Id == supplierId.Value).ToList();
+            }
 
             return View(products);
         }
+
+        //public IActionResult Index(int? categoryId, int? supplierId)
+        //{
+        //    _logger.LogInformation("Opened index page");
+        //    ViewBag.Categories = _productService.GetProductCategories();
+        //    ViewBag.Suppliers = _productService.GetSuppliers();
+        //    ViewBag.SelectedCategoryId = categoryId;
+        //    ViewBag.SelectedSupplierId = supplierId;
+
+        //    var products = categoryId.HasValue
+        //        ? _productService.GetProductsByCategory(categoryId.Value)
+        //        : supplierId.HasValue
+        //            ? _productService.GetProductsBySupplier(supplierId.Value)
+        //            : _productService.GetAllProducts();
+
+        //    return View(products);
+        //}
 
         //public IActionResult Index()
         //{
