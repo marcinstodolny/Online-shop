@@ -21,7 +21,21 @@
                     <p class="card-text">@element.Product.Description.</p>
                     <p class="card-text">Category: @element.Product.ProductCategory.Department</p>
                     <p class="card-text">Supplier: @element.Product.Supplier.Name</p>
-                    <p class="card-text text-center"><strong>Price: @element.Product.DefaultPrice.ToString("C2", new CultureInfo("en-US"))<br/>Quantity: @element.Quantity</strong></p>
+                    <p class="card-text text-center"><strong>Price: @element.Product.DefaultPrice.ToString("C2", new CultureInfo("en-US"))</strong></p>
+                    <p class="card-text text-center"><strong>
+                        @{
+                            if (@element.Quantity == 1)
+                            {
+                                <input type="button" disabled class="btn btn-primary" value="-"/>
+                            }
+                            else
+                            {
+                                <a asp-controller="cart" asp-action="Update" asp-route-id="@element.Product.Id", asp-route-operation="subtract" type="button" class="btn btn-primary">-</a> 
+                            }
+                                }
+                        Quantity: @element.Quantity
+                        <a asp-controller="cart" asp-action="Update" asp-route-id="@element.Product.Id", asp-route-operation="add" type="button" class="btn btn-primary">+</a>
+                    </strong></p>
                     <a asp-controller="cart" asp-action="Remove" asp-route-id="@element.Product.Id" type="button" class="btn btn-primary">Remove</a>
                 </div>
             </div>
