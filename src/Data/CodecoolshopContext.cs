@@ -50,7 +50,9 @@ namespace Data
                 var lenovo = new Supplier { Name = "Lenovo", Description = "Computers" };
                 var apple = new Supplier { Name = "Apple", Description = "Electronics" };
                 var samsung = new Supplier { Name = "Samsung", Description = "Electronics" };
-
+                var microsoft = new Supplier { Name = "Microsoft", Description = "Software and hardware" };
+                
+                context.Suppliers.Add(microsoft);
                 context.Suppliers.Add(amazon);
                 context.Suppliers.Add(lenovo);
                 context.Suppliers.Add(apple);
@@ -122,7 +124,51 @@ namespace Data
                     ProductCategory = smartphone,
                     Supplier = apple
                 };
-
+                var surfaceLaptop = new Product
+                {
+                    Name = "Microsoft Surface Laptop",
+                    DefaultPrice = 999.0m,
+                    Currency = "USD",
+                    Description = "A slim, stylish laptop with a high-resolution touchscreen display and excellent battery life.",
+                    ProductCategory = laptop,
+                    Supplier = microsoft
+                };
+                var macbookAir = new Product
+                {
+                    Name = "Apple MacBook Air",
+                    DefaultPrice = 1199.0m,
+                    Currency = "USD",
+                    Description = "A lightweight, portable laptop with a high-resolution Retina display and powerful performance.",
+                    ProductCategory = laptop,
+                    Supplier = apple
+                };
+                var surfacePro = new Product
+                {
+                    Name = "Microsoft Surface Pro",
+                    DefaultPrice = 799.0m,
+                    Currency = "USD",
+                    Description = "A versatile 2-in-1 tablet and laptop with a high-resolution touchscreen display and excellent battery life.",
+                    ProductCategory = tablet,
+                    Supplier = microsoft
+                };
+                var lenovoThinkPad = new Product
+                {
+                    Name = "Lenovo ThinkPad X1 Carbon",
+                    DefaultPrice = 1299.0m,
+                    Currency = "USD",
+                    Description = "A durable, high-performance business laptop with a sleek design and powerful performance.",
+                    ProductCategory = laptop,
+                    Supplier = lenovo
+                };
+                var appleiPadPro = new Product
+                {
+                    Name = "Apple iPad Pro",
+                    DefaultPrice = 799.0m,
+                    Currency = "USD",
+                    Description = "A powerful tablet with a high-resolution display, advanced performance, and support for Apple Pencil.",
+                    ProductCategory = tablet,
+                    Supplier = apple
+                };
                 // ... add more products as needed ...
                 context.Products.Add(amazonFire);
                 context.Products.Add(lenovoIdeaPad);
@@ -130,6 +176,11 @@ namespace Data
                 context.Products.Add(macbookPro);
                 context.Products.Add(galaxyS21);
                 context.Products.Add(iPhone12);
+                context.Products.Add(surfaceLaptop);
+                context.Products.Add(macbookAir);
+                context.Products.Add(surfacePro);
+                context.Products.Add(lenovoThinkPad);
+                context.Products.Add(appleiPadPro);
                 context.SaveChanges();
             }
         }
