@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Codecool.CodecoolShop.Models;
+using Domain;
 
 namespace Codecool.CodecoolShop.Daos.Implementations
 {

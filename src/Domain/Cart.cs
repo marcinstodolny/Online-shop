@@ -1,9 +1,12 @@
-﻿using Domain;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Codecool.CodecoolShop.Models
+namespace Domain
 {
-    public class Cart : BaseModel
+    public class Cart
     {
-        public List<Item> Items { get; set; }
+        [Key]
+        public int Id { get; set; }
+        public int UserId { get; set; } //to be used latter
+        public List<Item>? Items { get; set; }
     }
 }

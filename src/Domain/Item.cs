@@ -1,9 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Domain;
 
-namespace Codecool.CodecoolShop.Models
+namespace Domain
 {
-    public class Item :BaseModel
+    public class Item
     {
         [Required]
         public Product Product { get; set; }

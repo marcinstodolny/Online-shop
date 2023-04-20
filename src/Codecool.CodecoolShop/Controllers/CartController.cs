@@ -1,9 +1,9 @@
 ﻿using Codecool.CodecoolShop.Helpers;
-using Codecool.CodecoolShop.Models;
 using Data;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using Domain;
 using Product = Domain.Product;
 
 namespace Codecool.CodecoolShop.Controllers
@@ -27,20 +27,20 @@ namespace Codecool.CodecoolShop.Controllers
         {
             if (HttpContext.Session.GetObjectFromJson<List<Item>>("cart") == null)
             {
-                var cart = new List<Item> { new() { Product = find(id), Quantity = 1 } };
+                var cart = new List<Item> { new() { Product = Find(id), Quantity = 1 } };
                 HttpContext.Session.SetObjectAsJson("cart", cart);
             }
             else
             {
                 var cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart");
-                var index = isExist(id);
+                var index = IsExist(id);
                 if (index != -1)
                 {
                     cart[index].Quantity++;
                 }
                 else
                 {
-                    cart.Add(new Item { Product = find(id), Quantity = 1 });
+                    cart.Add(new Item { Product = Find(id), Quantity = 1 });
                 }
                 HttpContext.Session.SetObjectAsJson("cart", cart);
             }
@@ -51,18 +51,19 @@ namespace Codecool.CodecoolShop.Controllers
         public IActionResult Remove(string id)
         {
             var cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart");
-            var index = isExist(id);
+            var index = IsExist(id);
             cart.RemoveAt(index);
             HttpContext.Session.SetObjectAsJson("cart", cart);
             return RedirectToAction("Index");
         }
 
-        private int isExist(string id)
+        private int IsExist(string id)
         {
             var cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart");
             for (var i = 0; i < cart.Count; i++)
             {
-                if (cart[i].Product.Id.Equals(id))
+
+                if (cart[i].Product.Id.ToString().Equals(id))
                 {
                     return i;
                 }
@@ -70,12 +71,11 @@ namespace Codecool.CodecoolShop.Controllers
             return -1;
         }
 
-        private Product find(string id)
+        private Product Find(string id)
         {
-            var success = int.TryParse(id, out var result);
-            if (success && _context.Products.Any(product => product.Id == result))
+            if (_context.Products.Any(product => product.Id.ToString() == id))
             {
-                return _context.Products.First(product => product.Id == result);
+                return _context.Products.First(product => product.Id.ToString() == id);
             }
 
             return null;

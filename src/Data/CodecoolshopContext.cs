@@ -10,6 +10,7 @@ namespace Data
         //private const string ConnectionString = "Data Source=localhost;Database=Codecoolshop;Trust Server Certificate=true;MultipleActiveResultSets=true;Integrated Security=true";
         private readonly IConfiguration _configuration;
         public DbSet<Product> Products { get; set; }
+        //public DbSet<Cart> Carts { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
         public CodecoolshopContext(DbContextOptions options, IConfiguration configuration) : base(options)
@@ -52,6 +53,12 @@ namespace Data
                 context.Suppliers.Add(lenovo);
                 var tablet = new Domain.ProductCategory { Name = "Tablet", Department = "Hardware", Description = "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display." };
                 context.ProductCategories.Add(tablet);
+
+                // Add Cart
+                //var cart = new Cart()
+                //{
+                //    Items = new List<Item>()
+                //};
 
                 // Add products conditionally
 

@@ -1,5 +1,6 @@
-﻿using Codecool.CodecoolShop.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Domain;
+using Product = Codecool.CodecoolShop.Models.Product;
 
 namespace Codecool.CodecoolShop.Daos
 {
