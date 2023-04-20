@@ -40,6 +40,18 @@ namespace Codecool.CodecoolShop.Services
             return suppliers;
         }
 
+        public List<Domain.Product> GetProductsByCategory(int categoryId)
+        {
+            var products = _context.Products.Where(p => p.ProductCategory.Id == categoryId).ToList();
+            return products;
+        }
+
+        public List<Domain.Product> GetProductsBySupplier(int supplierId)
+        {
+            var products = _context.Products.Where(p => p.Supplier.Id == supplierId).ToList();
+            return products;
+        }
+
         // ** Service only for in memory database **
 
         //    private readonly Daos.IProductDao productDao;
