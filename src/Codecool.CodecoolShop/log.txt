@@ -1,0 +1,201 @@
+2023-04-19 11:08:18.906 +02:00 [INF] Inside Startup ctor
+2023-04-19 11:08:19.179 +02:00 [DBG] Hosting starting
+2023-04-19 11:08:19.231 +02:00 [INF] User profile is available. Using 'C:\Users\Tomek\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2023-04-19 11:08:19.266 +02:00 [DBG] Reading data from file 'C:\Users\Tomek\AppData\Local\ASP.NET\DataProtection-Keys\key-25eab661-178c-48cb-a660-ba71cca09a2d.xml'.
+2023-04-19 11:08:19.273 +02:00 [DBG] Found key {25eab661-178c-48cb-a660-ba71cca09a2d}.
+2023-04-19 11:08:19.285 +02:00 [DBG] Considering key {25eab661-178c-48cb-a660-ba71cca09a2d} with expiration date 2023-06-23 08:48:21Z as default key.
+2023-04-19 11:08:19.287 +02:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=3.1.32.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2023-04-19 11:08:19.290 +02:00 [DBG] Decrypting secret element using Windows DPAPI.
+2023-04-19 11:08:19.291 +02:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=3.1.32.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2023-04-19 11:08:19.295 +02:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2023-04-19 11:08:19.298 +02:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2023-04-19 11:08:19.300 +02:00 [DBG] Using key {25eab661-178c-48cb-a660-ba71cca09a2d} as the default key.
+2023-04-19 11:08:19.301 +02:00 [DBG] Key ring with default key {25eab661-178c-48cb-a660-ba71cca09a2d} was loaded during application startup.
+2023-04-19 11:08:19.395 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/Product/Index.cshtml'.
+2023-04-19 11:08:19.396 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/Product/Privacy.cshtml'.
+2023-04-19 11:08:19.396 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/Shared/Error.cshtml'.
+2023-04-19 11:08:19.397 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/Shared/_Layout.cshtml'.
+2023-04-19 11:08:19.397 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/Shared/_ValidationScriptsPartial.cshtml'.
+2023-04-19 11:08:19.397 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/_ViewImports.cshtml'.
+2023-04-19 11:08:19.398 +02:00 [DBG] Initializing Razor view compiler with compiled view: '/Views/_ViewStart.cshtml'.
+2023-04-19 11:08:19.411 +02:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2023-04-19 11:08:19.572 +02:00 [DBG] Using development certificate: CN=localhost (Thumbprint: 6A460CAA2B3638E6779153A241977CFFC2935E05)
+2023-04-19 11:08:19.599 +02:00 [INF] Now listening on: https://localhost:5001
+2023-04-19 11:08:19.600 +02:00 [INF] Now listening on: http://localhost:5000
+2023-04-19 11:08:19.600 +02:00 [DBG] Loaded hosting startup assembly Codecool.CodecoolShop
+2023-04-19 11:08:19.601 +02:00 [DBG] Loaded hosting startup assembly Microsoft.AspNetCore.Watch.BrowserRefresh
+2023-04-19 11:08:19.601 +02:00 [DBG] Loaded hosting startup assembly Microsoft.WebTools.BrowserLink.Net
+2023-04-19 11:08:19.602 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-04-19 11:08:19.603 +02:00 [INF] Hosting environment: Development
+2023-04-19 11:08:19.603 +02:00 [INF] Content root path: C:\Codecool\Module3-OOP\codecool-shop-1-csharp-Tomek-Boomer\src\Codecool.CodecoolShop
+2023-04-19 11:08:19.604 +02:00 [DBG] Hosting started
+2023-04-19 11:08:19.975 +02:00 [DBG] Connection id "0HMQ0MMFC13UR" accepted.
+2023-04-19 11:08:19.977 +02:00 [DBG] Connection id "0HMQ0MMFC13UR" started.
+2023-04-19 11:08:19.983 +02:00 [DBG] Connection id "0HMQ0MMFC13UR" received FIN.
+2023-04-19 11:08:19.987 +02:00 [DBG] Failed to authenticate HTTPS connection.
+System.IO.IOException:  Received an unexpected EOF or 0 bytes from the transport stream.
+   at System.Net.Security.SslStream.ReceiveBlobAsync[TIOAdapter](TIOAdapter adapter)
+   at System.Net.Security.SslStream.ForceAuthenticationAsync[TIOAdapter](TIOAdapter adapter, Boolean receiveFirst, Byte[] reAuthenticationData, Boolean isApm)
+   at Microsoft.AspNetCore.Server.Kestrel.Https.Internal.HttpsConnectionMiddleware.OnConnectionAsync(ConnectionContext context)
+2023-04-19 11:08:20.028 +02:00 [DBG] Connection id "0HMQ0MMFC13UR" stopped.
+2023-04-19 11:08:20.030 +02:00 [DBG] Connection id "0HMQ0MMFC13UR" sending FIN because: "The Socket transport's send loop completed gracefully."
+2023-04-19 11:08:20.237 +02:00 [DBG] Connection id "0HMQ0MMFC13US" accepted.
+2023-04-19 11:08:20.238 +02:00 [DBG] Connection id "0HMQ0MMFC13US" started.
+2023-04-19 11:08:20.268 +02:00 [DBG] Connection 0HMQ0MMFC13US established using the following protocol: "Tls13"
+2023-04-19 11:08:20.306 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/ - -
+2023-04-19 11:08:20.336 +02:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2023-04-19 11:08:20.338 +02:00 [DBG] The request path / does not match a supported file type
+2023-04-19 11:08:20.354 +02:00 [DBG] 1 candidate(s) found for the request path '/'
+2023-04-19 11:08:20.358 +02:00 [DBG] Endpoint 'Codecool.CodecoolShop.Controllers.ProductController.Index (Codecool.CodecoolShop)' with route pattern '{controller=Product}/{action=Index}/{id?}' is valid for the request path '/'
+2023-04-19 11:08:20.359 +02:00 [DBG] Request matched endpoint 'Codecool.CodecoolShop.Controllers.ProductController.Index (Codecool.CodecoolShop)'
+2023-04-19 11:08:20.362 +02:00 [INF] Executing endpoint 'Codecool.CodecoolShop.Controllers.ProductController.Index (Codecool.CodecoolShop)'
+2023-04-19 11:08:20.388 +02:00 [INF] Route matched with {action = "Index", controller = "Product"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Codecool.CodecoolShop.Controllers.ProductController (Codecool.CodecoolShop).
+2023-04-19 11:08:20.389 +02:00 [DBG] Execution plan of authorization filters (in the following order): ["None"]
+2023-04-19 11:08:20.390 +02:00 [DBG] Execution plan of resource filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Filters.SaveTempDataFilter"]
+2023-04-19 11:08:20.391 +02:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.Filters.ControllerActionFilter (Order: -2147483648)","Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)"]
+2023-04-19 11:08:20.392 +02:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2023-04-19 11:08:20.393 +02:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Filters.SaveTempDataFilter"]
+2023-04-19 11:08:20.394 +02:00 [DBG] Executing controller factory for controller Codecool.CodecoolShop.Controllers.ProductController (Codecool.CodecoolShop)
+2023-04-19 11:08:20.529 +02:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2023-04-19 11:08:21.088 +02:00 [DBG] The property 'Product.ProductCategoryId' was created in shadow state because there are no eligible CLR members with a matching name.
+2023-04-19 11:08:21.089 +02:00 [DBG] The property 'Product.SupplierId' was created in shadow state because there are no eligible CLR members with a matching name.
+2023-04-19 11:08:21.255 +02:00 [DBG] Entity Framework Core 7.0.5 initialized 'CodecoolshopContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:7.0.5' with options: None
+2023-04-19 11:08:21.330 +02:00 [DBG] Compiling query expression: 
+'DbSet<Product>()
+    .Any()'
+2023-04-19 11:08:21.547 +02:00 [DBG] Generated query execution expression: 
+'queryContext => new SingleQueryingEnumerable<bool>(
+    (RelationalQueryContext)queryContext, 
+    RelationalCommandCache.QueryExpression(
+        Projection Mapping:
+            EmptyProjectionMember -> 0
+        SELECT EXISTS (
+            SELECT 1
+            FROM Products AS p)), 
+    null, 
+    Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, bool>, 
+    Data.CodecoolshopContext, 
+    False, 
+    False, 
+    True
+)
+    .Single()'
+2023-04-19 11:08:21.586 +02:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2023-04-19 11:08:21.589 +02:00 [DBG] Creating DbConnection.
+2023-04-19 11:08:21.622 +02:00 [DBG] Created DbConnection. (30ms).
+2023-04-19 11:08:21.631 +02:00 [DBG] Created DbCommand for 'ExecuteReader' (42ms).
+2023-04-19 11:08:21.633 +02:00 [DBG] Initialized DbCommand for 'ExecuteReader' (48ms).
+2023-04-19 11:08:21.637 +02:00 [DBG] Opening connection to database 'Codecoolshop' on server 'localhost'.
+2023-04-19 11:08:21.915 +02:00 [DBG] Opened connection to database 'Codecoolshop' on server 'localhost'.
+2023-04-19 11:08:21.923 +02:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2023-04-19 11:08:21.956 +02:00 [INF] Executed DbCommand (33ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Products] AS [p]) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2023-04-19 11:08:21.971 +02:00 [DBG] Closing data reader to 'Codecoolshop' on server 'localhost'.
+2023-04-19 11:08:21.980 +02:00 [DBG] A data reader for 'Codecoolshop' on server 'localhost' is being disposed after spending 16ms reading results.
+2023-04-19 11:08:21.984 +02:00 [DBG] Closing connection to database 'Codecoolshop' on server 'localhost'.
+2023-04-19 11:08:21.994 +02:00 [DBG] Closed connection to database 'Codecoolshop' on server 'localhost' (9ms).
+2023-04-19 11:08:21.995 +02:00 [DBG] Executed controller factory for controller Codecool.CodecoolShop.Controllers.ProductController (Codecool.CodecoolShop)
+2023-04-19 11:08:21.996 +02:00 [INF] Opened index page
+2023-04-19 11:08:22.000 +02:00 [DBG] Compiling query expression: 
+'DbSet<Product>()'
+2023-04-19 11:08:22.034 +02:00 [DBG] Generated query execution expression: 
+'queryContext => new SingleQueryingEnumerable<Product>(
+    (RelationalQueryContext)queryContext, 
+    RelationalCommandCache.QueryExpression(
+        Projection Mapping:
+            EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: Product.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: Product.Currency (string) Required, 1], [Property: Product.DefaultPrice (decimal) Required, 2], [Property: Product.Description (string) Required, 3], [Property: Product.Name (string) Required, 4], [Property: Product.ProductCategoryId (no field, int) Shadow Required FK Index, 5], [Property: Product.SupplierId (no field, int) Shadow Required FK Index, 6] }
+        SELECT p.Id, p.Currency, p.DefaultPrice, p.Description, p.Name, p.ProductCategoryId, p.SupplierId
+        FROM Products AS p), 
+    null, 
+    Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, Product>, 
+    Data.CodecoolshopContext, 
+    False, 
+    False, 
+    True
+)'
+2023-04-19 11:08:22.038 +02:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2023-04-19 11:08:22.038 +02:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2023-04-19 11:08:22.039 +02:00 [DBG] Initialized DbCommand for 'ExecuteReader' (1ms).
+2023-04-19 11:08:22.039 +02:00 [DBG] Opening connection to database 'Codecoolshop' on server 'localhost'.
+2023-04-19 11:08:22.041 +02:00 [DBG] Opened connection to database 'Codecoolshop' on server 'localhost'.
+2023-04-19 11:08:22.042 +02:00 [DBG] Executing DbCommand [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Currency], [p].[DefaultPrice], [p].[Description], [p].[Name], [p].[ProductCategoryId], [p].[SupplierId]
+FROM [Products] AS [p]
+2023-04-19 11:08:22.044 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[Id], [p].[Currency], [p].[DefaultPrice], [p].[Description], [p].[Name], [p].[ProductCategoryId], [p].[SupplierId]
+FROM [Products] AS [p]
+2023-04-19 11:08:22.080 +02:00 [DBG] Context 'CodecoolshopContext' started tracking 'Product' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-04-19 11:08:22.096 +02:00 [DBG] Context 'CodecoolshopContext' started tracking 'Product' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-04-19 11:08:22.097 +02:00 [DBG] Context 'CodecoolshopContext' started tracking 'Product' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2023-04-19 11:08:22.098 +02:00 [DBG] Closing data reader to 'Codecoolshop' on server 'localhost'.
+2023-04-19 11:08:22.098 +02:00 [DBG] A data reader for 'Codecoolshop' on server 'localhost' is being disposed after spending 52ms reading results.
+2023-04-19 11:08:22.099 +02:00 [DBG] Closing connection to database 'Codecoolshop' on server 'localhost'.
+2023-04-19 11:08:22.099 +02:00 [DBG] Closed connection to database 'Codecoolshop' on server 'localhost' (0ms).
+2023-04-19 11:08:22.103 +02:00 [DBG] View lookup cache miss for view 'Index' in controller 'Product'.
+2023-04-19 11:08:22.108 +02:00 [INF] Executing ViewResult, running view Index.
+2023-04-19 11:08:22.112 +02:00 [DBG] The view path '/Views/Product/Index.cshtml' was found in 6.0256ms.
+2023-04-19 11:08:22.138 +02:00 [DBG] View lookup cache miss for view '_Layout' in controller 'Product'.
+2023-04-19 11:08:22.157 +02:00 [DBG] Found the endpoints ["Route: {controller=Product}/{action=Index}/{id?}"] for address Microsoft.AspNetCore.Routing.RouteValuesAddress
+2023-04-19 11:08:22.165 +02:00 [DBG] Successfully processed template {controller=Product}/{action=Index}/{id?} for Route: {controller=Product}/{action=Index}/{id?} resulting in  and 
+2023-04-19 11:08:22.166 +02:00 [DBG] Link generation succeeded for endpoints ["Route: {controller=Product}/{action=Index}/{id?}"] with result /
+2023-04-19 11:08:22.167 +02:00 [DBG] Found the endpoints ["Route: {controller=Product}/{action=Index}/{id?}"] for address Microsoft.AspNetCore.Routing.RouteValuesAddress
+2023-04-19 11:08:22.168 +02:00 [DBG] Successfully processed template {controller=Product}/{action=Index}/{id?} for Route: {controller=Product}/{action=Index}/{id?} resulting in  and 
+2023-04-19 11:08:22.169 +02:00 [DBG] Link generation succeeded for endpoints ["Route: {controller=Product}/{action=Index}/{id?}"] with result /
+2023-04-19 11:08:22.170 +02:00 [DBG] Found the endpoints ["Route: {controller=Product}/{action=Index}/{id?}"] for address Microsoft.AspNetCore.Routing.RouteValuesAddress
+2023-04-19 11:08:22.171 +02:00 [DBG] Successfully processed template {controller=Product}/{action=Index}/{id?} for Route: {controller=Product}/{action=Index}/{id?} resulting in /Product/Privacy and 
+2023-04-19 11:08:22.172 +02:00 [DBG] Link generation succeeded for endpoints ["Route: {controller=Product}/{action=Index}/{id?}"] with result /Product/Privacy
+2023-04-19 11:08:22.173 +02:00 [DBG] Found the endpoints ["Route: {controller=Product}/{action=Index}/{id?}"] for address Microsoft.AspNetCore.Routing.RouteValuesAddress
+2023-04-19 11:08:22.174 +02:00 [DBG] Successfully processed template {controller=Product}/{action=Index}/{id?} for Route: {controller=Product}/{action=Index}/{id?} resulting in /Product/Privacy and 
+2023-04-19 11:08:22.174 +02:00 [DBG] Link generation succeeded for endpoints ["Route: {controller=Product}/{action=Index}/{id?}"] with result /Product/Privacy
+2023-04-19 11:08:22.260 +02:00 [INF] Executed ViewResult - view Index executed in 157.5532ms.
+2023-04-19 11:08:22.266 +02:00 [INF] Executed action Codecool.CodecoolShop.Controllers.ProductController.Index (Codecool.CodecoolShop) in 1872.5536ms
+2023-04-19 11:08:22.268 +02:00 [INF] Executed endpoint 'Codecool.CodecoolShop.Controllers.ProductController.Index (Codecool.CodecoolShop)'
+2023-04-19 11:08:22.272 +02:00 [INF] HTTP GET / responded 200 in 1929.5248 ms
+2023-04-19 11:08:22.282 +02:00 [DBG] Response markup is scheduled to include browser refresh script injection.
+2023-04-19 11:08:22.313 +02:00 [DBG] Response markup was updated to include browser refresh script injection.
+2023-04-19 11:08:22.322 +02:00 [DBG] 'CodecoolshopContext' disposed.
+2023-04-19 11:08:22.330 +02:00 [DBG] Disposing connection to database 'Codecoolshop' on server 'localhost'.
+2023-04-19 11:08:22.333 +02:00 [DBG] Disposed connection to database '' on server '' (2ms).
+2023-04-19 11:08:22.334 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/ - - - 200 - text/html;+charset=utf-8 2030.1339ms
+2023-04-19 11:08:22.338 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/lib/bootstrap/dist/css/bootstrap.min.css - -
+2023-04-19 11:08:22.339 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/img/Lenovo IdeaPad Miix 700.jpg - -
+2023-04-19 11:08:22.338 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/css/site.css - -
+2023-04-19 11:08:22.344 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/img/Amazon Fire.jpg - -
+2023-04-19 11:08:22.355 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/lib/bootstrap/dist/js/bootstrap.bundle.min.js - -
+2023-04-19 11:08:22.357 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/img/Amazon Fire HD 8.jpg - -
+2023-04-19 11:08:22.355 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/lib/jquery/dist/jquery.min.js - -
+2023-04-19 11:08:22.366 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - -
+2023-04-19 11:08:22.363 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0 - -
+2023-04-19 11:08:22.364 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/_vs/browserLink - -
+2023-04-19 11:08:22.386 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_framework/aspnetcore-browser-refresh.js - - - 200 12012 application/javascript;+charset=utf-8 19.8435ms
+2023-04-19 11:08:22.399 +02:00 [INF] Sending file. Request path: '/js/site.js'. Physical path: 'C:\Codecool\Module3-OOP\codecool-shop-1-csharp-Tomek-Boomer\src\Codecool.CodecoolShop\wwwroot\js\site.js'
+2023-04-19 11:08:22.399 +02:00 [INF] Sending file. Request path: '/img/Lenovo IdeaPad Miix 700.jpg'. Physical path: 'C:\Codecool\Module3-OOP\codecool-shop-1-csharp-Tomek-Boomer\src\Codecool.CodecoolShop\wwwroot\img\Lenovo IdeaPad Miix 700.jpg'
+2023-04-19 11:08:22.399 +02:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'C:\Codecool\Module3-OOP\codecool-shop-1-csharp-Tomek-Boomer\src\Codecool.CodecoolShop\wwwroot\css\site.css'
+2023-04-19 11:08:22.399 +02:00 [INF] Sending file. Request path: '/lib/jquery/dist/jquery.min.js'. Physical path: 'C:\Codecool\Module3-OOP\codecool-shop-1-csharp-Tomek-Boomer\src\Codecool.CodecoolShop\wwwroot\lib\jquery\dist\jquery.min.js'
+2023-04-19 11:08:22.399 +02:00 [INF] Sending file. Request path: '/img/Amazon Fire.jpg'. Physical path: 'C:\Codecool\Module3-OOP\codecool-shop-1-csharp-Tomek-Boomer\src\Codecool.CodecoolShop\wwwroot\img\Amazon Fire.jpg'
+2023-04-19 11:08:22.399 +02:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js'. Physical path: 'C:\Codecool\Module3-OOP\codecool-shop-1-csharp-Tomek-Boomer\src\Codecool.CodecoolShop\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js'
+2023-04-19 11:08:22.399 +02:00 [INF] Sending file. Request path: '/img/Amazon Fire HD 8.jpg'. Physical path: 'C:\Codecool\Module3-OOP\codecool-shop-1-csharp-Tomek-Boomer\src\Codecool.CodecoolShop\wwwroot\img\Amazon Fire HD 8.jpg'
+2023-04-19 11:08:22.399 +02:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css'. Physical path: 'C:\Codecool\Module3-OOP\codecool-shop-1-csharp-Tomek-Boomer\src\Codecool.CodecoolShop\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css'
+2023-04-19 11:08:22.400 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0 - - - 200 230 application/javascript 36.5789ms
+2023-04-19 11:08:22.400 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/img/Lenovo IdeaPad Miix 700.jpg - - - 200 56805 image/jpeg 61.1370ms
+2023-04-19 11:08:22.401 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/css/site.css - - - 200 1417 text/css 62.6248ms
+2023-04-19 11:08:22.402 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/lib/jquery/dist/jquery.min.js - - - 200 89478 application/javascript 47.3602ms
+2023-04-19 11:08:22.402 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 37.7797ms
+2023-04-19 11:08:22.403 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/img/Amazon Fire.jpg - - - 200 67217 image/jpeg 59.0594ms
+2023-04-19 11:08:22.403 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/lib/bootstrap/dist/js/bootstrap.bundle.min.js - - - 200 78641 application/javascript 48.6399ms
+2023-04-19 11:08:22.404 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/img/Amazon Fire HD 8.jpg - - - 200 72090 image/jpeg 47.3926ms
+2023-04-19 11:08:22.404 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/lib/bootstrap/dist/css/bootstrap.min.css - - - 200 155764 text/css 66.0940ms
+2023-04-19 11:08:22.641 +02:00 [INF] Request starting HTTP/2 GET https://localhost:5001/favicon.ico - -
+2023-04-19 11:08:22.643 +02:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Codecool\Module3-OOP\codecool-shop-1-csharp-Tomek-Boomer\src\Codecool.CodecoolShop\wwwroot\favicon.ico'
+2023-04-19 11:08:22.644 +02:00 [INF] Request finished HTTP/2 GET https://localhost:5001/favicon.ico - - - 200 32038 image/x-icon 2.5743ms
