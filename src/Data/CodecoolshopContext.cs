@@ -42,16 +42,27 @@ namespace Data
             base.OnModelCreating(modelBuilder);
         }
 
-        public void IfDbEmptyAddNewItems(CodecoolshopContext context)
+        public static void IfDbEmptyAddNewItems(CodecoolshopContext context)
         {
             if (!context.Products.Any())
             {
                 var amazon = new Supplier { Name = "Amazon", Description = "Digital content and services" };
                 var lenovo = new Supplier { Name = "Lenovo", Description = "Computers" };
+                var apple = new Supplier { Name = "Apple", Description = "Electronics" };
+                var samsung = new Supplier { Name = "Samsung", Description = "Electronics" };
+
                 context.Suppliers.Add(amazon);
                 context.Suppliers.Add(lenovo);
+                context.Suppliers.Add(apple);
+                context.Suppliers.Add(samsung);
+
                 var tablet = new ProductCategory { Name = "Tablet", Department = "Hardware", Description = "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display." };
+                var laptop = new ProductCategory { Name = "Laptop", Department = "Hardware", Description = "A laptop is a portable personal computer with a clamshell form factor, suitable for mobile use and with a built-in keyboard and display." };
+                var smartphone = new ProductCategory { Name = "Smartphone", Department = "Hardware", Description = "A smartphone is a mobile device that combines cellular and mobile computing functions into one unit." };
+
                 context.ProductCategories.Add(tablet);
+                context.ProductCategories.Add(laptop);
+                context.ProductCategories.Add(smartphone);
 
                 // Add products conditionally
 
@@ -84,10 +95,41 @@ namespace Data
                     ProductCategory = tablet,
                     Supplier = amazon
                 };
+                var macbookPro = new Product
+                {
+                    Name = "MacBook Pro",
+                    DefaultPrice = 1299.0m,
+                    Currency = "USD",
+                    Description = "The MacBook Pro is a line of Macintosh portable computers introduced by Apple Inc. in January 2006.",
+                    ProductCategory = laptop,
+                    Supplier = apple
+                };
+                var galaxyS21 = new Product
+                {
+                    Name = "Samsung Galaxy S21",
+                    DefaultPrice = 799.0m,
+                    Currency = "USD",
+                    Description = "The Samsung Galaxy S21 is an Android-based smartphone designed, developed, and marketed by Samsung Electronics.",
+                    ProductCategory = smartphone,
+                    Supplier = samsung
+                };
+                var iPhone12 = new Product
+                {
+                    Name = "Apple iPhone 12",
+                    DefaultPrice = 699.0m,
+                    Currency = "USD",
+                    Description = "The iPhone 12 is a smartphone designed, developed, and marketed by Apple Inc.",
+                    ProductCategory = smartphone,
+                    Supplier = apple
+                };
+
                 // ... add more products as needed ...
                 context.Products.Add(amazonFire);
                 context.Products.Add(lenovoIdeaPad);
                 context.Products.Add(amazonFireHd);
+                context.Products.Add(macbookPro);
+                context.Products.Add(galaxyS21);
+                context.Products.Add(iPhone12);
                 context.SaveChanges();
             }
         }
