@@ -20,7 +20,7 @@ namespace Codecool.CodecoolShop.Services
         {
             _logger = logger;
             _context = context;
-            context.IfDbEmptyAddNewItems(context);
+            CodecoolshopContext.IfDbEmptyAddNewItems(context);
         }
 
         public List<Domain.Product> GetAllProducts()
