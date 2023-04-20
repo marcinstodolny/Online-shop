@@ -11,10 +11,15 @@
                 <div class="card-body">
                     <h3 class="card-title">Categories</h3>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><a href="@Url.Action("Index", "Product")">Show All</a></li>
+                        <li class="list-group-item"><a href="@Url.Action("Index", "Product", new { categoryId = "", supplierId = ViewBag.SelectedSupplierId })">Show All</a></li>
                         @foreach (var category in ViewBag.Categories as List<Domain.ProductCategory>)
                         {
-                            <li class="list-group-item"><a href="@Url.Action("Index", "Product", new { categoryId = category.Id })">@category.Department</a></li>
+                            <li class="list-group-item">
+                                <a href="@Url.Action("Index", "Product", new { categoryId = category.Id, supplierId = ViewBag.SelectedSupplierId })"
+                                   class="@(ViewBag.SelectedCategoryId == category.Id ? "font-weight-bold" : "")">
+                                    @category.Name
+                                </a>
+                            </li>
                         }
                     </ul>
                 </div>
@@ -23,10 +28,15 @@
                 <div class="card-body">
                     <h3 class="card-title">Suppliers</h3>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><a href="@Url.Action("Index", "Product")">Show All</a></li>
+                        <li class="list-group-item"><a href="@Url.Action("Index", "Product", new { categoryId = ViewBag.SelectedCategoryId, supplierId = "" })">Show All</a></li>
                         @foreach (var supplier in ViewBag.Suppliers as List<Domain.Supplier>)
                         {
-                            <li class="list-group-item"><a href="@Url.Action("Index", "Product", new { supplierId = supplier.Id })">@supplier.Name</a></li>
+                            <li class="list-group-item">
+                                <a href="@Url.Action("Index", "Product", new { categoryId = ViewBag.SelectedCategoryId, supplierId = supplier.Id })"
+                                   class="@(ViewBag.SelectedSupplierId == supplier.Id ? "font-weight-bold" : "")">
+                                    @supplier.Name
+                                </a>
+                            </li>
                         }
                     </ul>
                 </div>
@@ -41,16 +51,9 @@
                             <img src="img/@(element.Name).jpg" style="height: 50%; width: 50%; align-self: center; padding-top: 10px">
 
                             <div class="card-body">
-                                <h5 class="card-title text-center">
-                                    Product
-                                    @{
-                                        var num = Model.IndexOf(element) + 1;
-                                    }
-                                    @num
-                                </h5>
-                                <h5 class="card-title">@element.Name</h5>
+                                <h5 class="card-title text-center">@element.Name</h5>
                                 <p class="card-text">@element.Description.</p>
-                                <p class="card-text">Category: @element.ProductCategory.Department</p>
+                                <p class="card-text">Category: @element.ProductCategory.Name</p>
                                 <p class="card-text">Supplier: @element.Supplier.Name</p>
                                 <p class="card-text text-center"><strong>Price: @element.DefaultPrice.ToString("C2")</strong></p>
                                 <a href="" type="button" class="btn btn-primary">Add To Cart</a>
