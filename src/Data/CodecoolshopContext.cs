@@ -52,17 +52,23 @@ namespace Data
                 var apple = new Supplier { Name = "Apple", Description = "Electronics" };
                 var samsung = new Supplier { Name = "Samsung", Description = "Electronics" };
                 var microsoft = new Supplier { Name = "Microsoft", Description = "Software and hardware" };
-                
+                var keurig = new Supplier { Name = "Keurig", Description = "Single-serve coffee and beverage systems" };
+                var breville = new Supplier { Name = "Breville", Description = "Kitchen appliances" };
+
                 context.Suppliers.Add(microsoft);
                 context.Suppliers.Add(amazon);
                 context.Suppliers.Add(lenovo);
                 context.Suppliers.Add(apple);
                 context.Suppliers.Add(samsung);
+                context.Suppliers.Add(keurig);
+                context.Suppliers.Add(breville);
 
                 var tablet = new ProductCategory { Name = "Tablet", Department = "Hardware", Description = "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display." };
                 var laptop = new ProductCategory { Name = "Laptop", Department = "Hardware", Description = "A laptop is a portable personal computer with a clamshell form factor, suitable for mobile use and with a built-in keyboard and display." };
                 var smartphone = new ProductCategory { Name = "Smartphone", Department = "Hardware", Description = "A smartphone is a mobile device that combines cellular and mobile computing functions into one unit." };
-
+                var coffeeMaker = new ProductCategory { Name = "Coffee Maker", Department = "Kitchen Appliances", Description = "Electronic devices used to brew coffee." };
+                
+                context.ProductCategories.Add(coffeeMaker);
                 context.ProductCategories.Add(tablet);
                 context.ProductCategories.Add(laptop);
                 context.ProductCategories.Add(smartphone);
@@ -176,7 +182,47 @@ namespace Data
                     ProductCategory = tablet,
                     Supplier = apple
                 };
+                var keurigKElite = new Product
+                {
+                    Name = "Keurig K-Elite",
+                    DefaultPrice = 169.0m,
+                    Currency = "USD",
+                    Description = "A single-serve coffee maker with a strong brew setting and iced coffee capabilities.",
+                    ProductCategory = coffeeMaker,
+                    Supplier = keurig
+                };
+                var brevilleBaristaExpress = new Product
+                {
+                    Name = "Breville Barista Express",
+                    DefaultPrice = 599.0m,
+                    Currency = "USD",
+                    Description = "A semi-automatic espresso machine with a built-in conical burr grinder and precise temperature controls.",
+                    ProductCategory = coffeeMaker,
+                    Supplier = breville
+                };
+                var keurigKMini = new Product
+                {
+                    Name = "Keurig K-Mini",
+                    DefaultPrice = 79.0m,
+                    Currency = "USD",
+                    Description = "A compact single-serve coffee maker, perfect for small spaces and on-the-go brewing.",
+                    ProductCategory = coffeeMaker,
+                    Supplier = keurig
+                };
+                var brevillePrecisionBrewer = new Product
+                {
+                    Name = "Breville Precision Brewer",
+                    DefaultPrice = 279.0m,
+                    Currency = "USD",
+                    Description = "A versatile drip coffee maker with customizable brew settings and a built-in cold brew mode.",
+                    ProductCategory = coffeeMaker,
+                    Supplier = breville
+                };
                 // ... add more products as needed ...
+                context.Products.Add(keurigKElite);
+                context.Products.Add(brevilleBaristaExpress);
+                context.Products.Add(keurigKMini);
+                context.Products.Add(brevillePrecisionBrewer);
                 context.Products.Add(amazonFire);
                 context.Products.Add(lenovoIdeaPad);
                 context.Products.Add(amazonFireHd);
