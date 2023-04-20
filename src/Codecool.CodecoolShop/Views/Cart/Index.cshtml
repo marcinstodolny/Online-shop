@@ -1,36 +1,54 @@
 @using System.Globalization
+@using System.Reflection.Metadata
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Home Page";
     var index = 1;
 }
-
+<div class="card-title text-center">
+    <strong>
+        Total price: @ViewBag.total.ToString("C2", new CultureInfo("en-US"))
+    </strong>
+</div>
 <div class="container">
-    <div class="col-md-9">
-        <div class="row">
-            @foreach (var element in ViewBag.cart)
-            {
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100">
-                        <img src="../img/@(element.Product.Name).jpg" style="height: 50%; width: 50%; align-self: center; padding-top: 10px">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">
-                                Product
-                                @index
-                            </h5>
-                            <h5 class="card-title">@element.Product.Name</h5>
-                            <p class="card-text">@element.Product.Description.</p>
-                            <p class="card-text">Category: @element.Product.ProductCategory.Name</p>
-                            <p class="card-text">Supplier: @element.Product.Supplier.Name</p>
-                            <p class="card-text text-center"><strong>Price: @element.Product.DefaultPrice.ToString("C2", new CultureInfo("en-US"))<br/>Quantity: @element.Quantity</strong></p>
-                            <a asp-controller="cart" asp-action="Remove" asp-route-id="@element.Product.Id" type="button" class="btn btn-primary">Remove</a>
-                        </div>
-                    </div>
+    @foreach (var element in ViewBag.cart)
+    {
+        <div class="col-lg-3 col-lg-3" style="display: inline-block; max-width: 350px; height: 350px">
+            <div class="card">
+                <img src="../img/@(element.Product.Name).jpg" style="height: 50%; width: 50%; align-self: center; padding-top: 10px">
+                <div class="card-body">
+                    <h5 class="card-title text-center">
+                        Product
+                        @index
+                    </h5>
+                    <h5 class="card-title">@element.Product.Name</h5>
+                    <p class="card-text">@element.Product.Description.</p>
+                    <p class="card-text">Category: @element.Product.ProductCategory.Department</p>
+                    <p class="card-text">Supplier: @element.Product.Supplier.Name</p>
+                    <p class="card-text text-center"><strong>Price: @element.Product.DefaultPrice.ToString("C2", new CultureInfo("en-US"))</strong></p>
+                    <p class="card-text text-center"><strong>
+                        <form asp-controller="cart" asp-action="InputQuantity" asp-route-id="@element.Product.Id" method="post" style="text-align: center">
+                            Quantity:
+                            @{
+                                if (@element.Quantity == 1)
+                                {
+                                    <input type="button" disabled class="btn btn-primary" value="-"/>
+                                }
+                                else
+                                {
+                                    <a asp-controller="cart" asp-action="update" asp-route-id="@element.Product.Id" asp-route-quantity="@(element.Quantity - 1)" type="button" class="btn btn-primary">-</a> 
+                                }
+                            }
+                            @Html.TextBox("quantity", element.Quantity, "", new { @onchange = "this.form.submit()", @type = "number", @style = "width: 20%" })
+                            <a asp-controller="cart" asp-action="update" asp-route-id="@element.Product.Id" asp-route-quantity="@(element.Quantity + 1)" type="button" class="btn btn-primary">+</a>
+                        </form>
+                    </strong></p>
+                    <p class="card-text text-center">
+                        <a asp-controller="cart" asp-action="Remove" asp-route-id="@element.Product.Id" type="button" class="btn btn-primary">Remove</a>
+                    </p>
                 </div>
-            }
+            </div>
         </div>
-    </div>
-    Total price:
-    @ViewBag.total.ToString("C2", new CultureInfo("en-US"))
+    }
 </div>
 
