@@ -450,4 +450,5 @@ MigrationBackup/
 
 # End of https://www.gitignore.io/api/visualstudio,jetbrains+all,visualstudiocode
 
-*.txt
+log.txt
+log.json
