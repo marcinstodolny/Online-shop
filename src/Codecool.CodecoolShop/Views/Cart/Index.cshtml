@@ -5,9 +5,12 @@
     ViewData["Title"] = "Home Page";
     var index = 1;
 }
-
+<div class="card-title text-center">
+    <strong>
+        Total price: @ViewBag.total.ToString("C2", new CultureInfo("en-US"))
+    </strong>
+</div>
 <div class="container">
-    
     @foreach (var element in ViewBag.cart)
     {
         <div class="col-lg-3 col-lg-3" style="display: inline-block; max-width: 350px; height: 350px">
@@ -47,7 +50,5 @@
             </div>
         </div>
     }
-    Total price:
-    @ViewBag.total.ToString("C2", new CultureInfo("en-US"))
 </div>
 
