@@ -1,22 +1,32 @@
-﻿using Codecool.CodecoolShop.Helpers;
+﻿using System;
+using Codecool.CodecoolShop.Helpers;
 using Data;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using Domain;
 using Product = Domain.Product;
+using Codecool.CodecoolShop.Services;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 
 namespace Codecool.CodecoolShop.Controllers
 {
     [Route("cart")]
     public class CartController : Controller
     {
-        private CodecoolshopContext _context;
-        [Route("index")]
-        public IActionResult Index(CodecoolshopContext context)
+        private ICartService _cartService;
+        private readonly ILogger<CartController> _logger;
+
+        public CartController(ICartService cartService, ILogger<CartController> logger)
         {
-            _context = context;
-            var cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart");
+            _cartService = cartService;
+            _logger = logger;
+        }
+        [Route("index")]
+        public IActionResult Index()
+        {
+            var cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart") ?? new List<Item>();
             ViewBag.cart = cart;
             ViewBag.total = cart.Sum(item => item.Product.DefaultPrice * item.Quantity);
             return View();
@@ -25,25 +35,31 @@ namespace Codecool.CodecoolShop.Controllers
         [Route("buy/{id}")]
         public IActionResult Buy(string id)
         {
+            _cartService.GetProductCategories();
+            _cartService.GetSuppliers();
+            if (_cartService.FindProductBy(id) == null) return RedirectToAction("Index");
             if (HttpContext.Session.GetObjectFromJson<List<Item>>("cart") == null)
             {
-                var cart = new List<Item> { new() { Product = Find(id), Quantity = 1 } };
+                List<Item> cart = new List<Item>();
+                cart.Add(new Item { Product = _cartService.FindProductBy(id), Quantity = 1 });
                 HttpContext.Session.SetObjectAsJson("cart", cart);
             }
             else
             {
                 var cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart");
-                var index = IsExist(id);
+                var index = IsExist(id, cart);
                 if (index != -1)
                 {
                     cart[index].Quantity++;
                 }
                 else
                 {
-                    cart.Add(new Item { Product = Find(id), Quantity = 1 });
+                    cart.Add(new Item { Product = _cartService.FindProductBy(id), Quantity = 1 });
                 }
                 HttpContext.Session.SetObjectAsJson("cart", cart);
+
             }
+
             return RedirectToAction("Index");
         }
 
@@ -51,15 +67,14 @@ namespace Codecool.CodecoolShop.Controllers
         public IActionResult Remove(string id)
         {
             var cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart");
-            var index = IsExist(id);
+            var index = IsExist(id, cart);
             cart.RemoveAt(index);
             HttpContext.Session.SetObjectAsJson("cart", cart);
             return RedirectToAction("Index");
         }
 
-        private int IsExist(string id)
+        private int IsExist(string id, List<Item> cart)
         {
-            var cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart");
             for (var i = 0; i < cart.Count; i++)
             {
 
@@ -70,17 +85,6 @@ namespace Codecool.CodecoolShop.Controllers
             }
             return -1;
         }
-
-        private Product Find(string id)
-        {
-            if (_context.Products.Any(product => product.Id.ToString() == id))
-            {
-                return _context.Products.First(product => product.Id.ToString() == id);
-            }
-
-            return null;
-        }
-
     }
     //public class CartController : Controller
     //{
