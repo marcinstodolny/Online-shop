@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Codecool.CodecoolShop.Daos;
 using Codecool.CodecoolShop.Daos.Implementations;
 using Codecool.CodecoolShop.Models;
+using Codecool.CodecoolShop.Services;
 using Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -47,6 +48,7 @@ namespace Codecool.CodecoolShop
                 opt.UseSqlServer(Configuration.GetConnectionString("CodecoolShopConnectionString")));
 
             //services.AddSingleton(Configuration);
+            services.AddScoped<IProductService, ProductService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,7 +67,8 @@ namespace Codecool.CodecoolShop
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseSerilogRequestLogging();
+
+            app.UseSerilogRequestLogging();          
 
             app.UseRouting();
 
