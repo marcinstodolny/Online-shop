@@ -8,7 +8,7 @@ namespace Domain
 {
     public class Supplier : BaseModel
     {
-        public List<Product> Products { get; set; }
+        //public List<Product> Products { get; set; }
 
         public override string ToString()
         {

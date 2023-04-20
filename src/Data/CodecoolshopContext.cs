@@ -10,6 +10,7 @@ namespace Data
         //private const string ConnectionString = "Data Source=localhost;Database=Codecoolshop;Trust Server Certificate=true;MultipleActiveResultSets=true;Integrated Security=true";
         private readonly IConfiguration _configuration;
         public DbSet<Product> Products { get; set; }
+        //public DbSet<Cart> Carts { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
         public CodecoolshopContext(DbContextOptions options, IConfiguration configuration) : base(options)
@@ -66,9 +67,15 @@ namespace Data
                 context.ProductCategories.Add(laptop);
                 context.ProductCategories.Add(smartphone);
 
+                // Add Cart
+                //var cart = new Cart()
+                //{
+                //    Items = new List<Item>()
+                //};
+
                 // Add products conditionally
 
-                var amazonFire = new Product
+                var amazonFire = new Domain.Product
                 {
                     Name = "Amazon Fire",
                     DefaultPrice = 49.9m,
@@ -78,7 +85,7 @@ namespace Data
                     ProductCategory = tablet,
                     Supplier = amazon
                 };
-                var lenovoIdeaPad = new Product
+                var lenovoIdeaPad = new Domain.Product
                 {
                     Name = "Lenovo IdeaPad Miix 700",
                     DefaultPrice = 479.0m,
@@ -88,7 +95,7 @@ namespace Data
                     ProductCategory = tablet,
                     Supplier = lenovo
                 };
-                var amazonFireHd = new Product
+                var amazonFireHd = new Domain.Product
                 {
                     Name = "Amazon Fire HD 8",
                     DefaultPrice = 89.0m,

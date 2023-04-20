@@ -19,7 +19,7 @@ namespace Domain
         public void SetProductCategory(ProductCategory productCategory)
         {
             ProductCategory = productCategory;
-            ProductCategory.Products.Add(this);
+            //ProductCategory.Products.Add(this);
         }
     }
 }
