@@ -50,35 +50,6 @@ namespace Codecool.CodecoolShop.Controllers
             return View(products);
         }
 
-        //public IActionResult Index(int? categoryId, int? supplierId)
-        //{
-        //    _logger.LogInformation("Opened index page");
-        //    ViewBag.Categories = _productService.GetProductCategories();
-        //    ViewBag.Suppliers = _productService.GetSuppliers();
-        //    ViewBag.SelectedCategoryId = categoryId;
-        //    ViewBag.SelectedSupplierId = supplierId;
-
-        //    var products = categoryId.HasValue
-        //        ? _productService.GetProductsByCategory(categoryId.Value)
-        //        : supplierId.HasValue
-        //            ? _productService.GetProductsBySupplier(supplierId.Value)
-        //            : _productService.GetAllProducts();
-
-        //    return View(products);
-        //}
-
-        //public IActionResult Index()
-        //{
-        //    //var products = ProductService.GetProductsForCategory(1);
-        //    _logger.LogInformation("Opened index page");
-        //    var pr = _productService.GetAllProducts();
-        //    _productService.GetProductCategories();
-        //    _productService.GetSuppliers();
-        //    //_context.ProductCategories.ToList();
-        //    //_context.Suppliers.ToList();
-        //    return View(pr);
-        //}
-
         public IActionResult Privacy()
         {
             return View();
