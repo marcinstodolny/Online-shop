@@ -13,6 +13,7 @@ namespace Data
         //public DbSet<Cart> Carts { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<Order> Orders { get; set; }
         public CodecoolshopContext(DbContextOptions options, IConfiguration configuration) : base(options)
         {
             _configuration = configuration;
