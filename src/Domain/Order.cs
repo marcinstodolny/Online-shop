@@ -9,25 +9,27 @@ namespace Domain
 {
     public class Order : BaseModel
     {
-        [Required]
+        [Required(ErrorMessage = "Email is required")]
+        [EmailAddress(ErrorMessage = "Invalid email")]
         public string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Phone is required")]
+        [Phone(ErrorMessage = "invalid phone format")]
         public string Phone { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Billing country is required")]
         public string BillingCountry { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Billing City is required")]
         public string BillingCity { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Billing Zip-Code is required")]
         public string BillingZipcode { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Billing Address is required")]
         public string BillingAddress { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Shipping Country is required")]
         public string ShippingCountry { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Shipping City is required")]
         public string ShippingCity { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Shipping ZIP Code is required")]
         public string ShippingZipcode { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Shipping Address is required")]
         public string ShippingAddress { get; set; }
     }
 }
