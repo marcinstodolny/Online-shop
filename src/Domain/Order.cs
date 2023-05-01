@@ -1,7 +1,9 @@
 ﻿using Codecool.CodecoolShop.Validators;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +28,7 @@ namespace Domain
         public string BillingAddress { get; set; }
 
         // Shipping address fields
+        [NotMapped]
         public bool ShippingSameAsBilling { get; set; }
 
         [RequiredIf("ShippingSameAsBilling", false, ErrorMessage = "Shipping Country is required")]

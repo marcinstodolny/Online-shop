@@ -43,7 +43,8 @@
     <span validation-for="billing-address"></span>
 
     <div>
-        <input type="checkbox" onclick="hideShippingDetails()" id="same-as-billing" for="ShippingSameAsBilling"> Shipping address same as billing address</>
+        <label for="same-as-billing">Same address as billing </label>
+        <input type="checkbox" onclick="hideShippingDetails()" id="same-as-billing" name="ShippingSameAsBilling" value="true">
     </div>
 
     <div id="shipping-details" class="hidden">

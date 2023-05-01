@@ -28,8 +28,16 @@ namespace Codecool.CodecoolShop.Controllers
         }
 
         [HttpPost]
-        public IActionResult Checkout([Bind("Name,Description,Email,Phone,BillingCountry,BillingCity,BillingZipcode,BillingAddress,ShippingCountry,ShippingCity,ShippingZipcode,ShippingAddress")] Order order)
+        public IActionResult Checkout([Bind("Name,Description,Email,Phone,BillingCountry,BillingCity,BillingZipcode,BillingAddress,ShippingSameAsBilling,ShippingCountry,ShippingCity,ShippingZipcode,ShippingAddress")] Order order)
         {
+            if (order.ShippingSameAsBilling)
+            {
+                order.ShippingAddress = order.BillingAddress;
+                order.ShippingCity = order.BillingCity;
+                order.ShippingCountry = order.BillingCountry;
+                order.ShippingZipcode = order.BillingZipcode;
+            }
+
             if (ModelState.IsValid)
             {
                 _orderService.AddOrder(order);

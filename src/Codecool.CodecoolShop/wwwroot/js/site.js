@@ -7,7 +7,15 @@ function hideShippingDetails() {
 
     if (checkbox.checked) {
         shippingDetails.style.display = "none";
+
+        document.getElementById("shipping-address").innerHTML = "default";
+        document.getElementById("shipping-city").value = "default";
+        document.getElementById("shipping-country").value = "default";
+        document.getElementById("shipping-zipcode").value = "default";
+
+        checkbox.innerHTML = "true";
     } else {
         shippingDetails.style.display = "block";
+        checkbox.innerHTML = "false";
     }
 }
