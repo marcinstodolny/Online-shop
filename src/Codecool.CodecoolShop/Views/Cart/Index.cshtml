@@ -51,7 +51,10 @@
                     <p class="card-text">
                         Total price: @ViewBag.total.ToString("C2", new CultureInfo("en-US"))
                     </p>
-                    <a asp-controller="order" asp-action="Checkout" class="btn btn-primary">Checkout</a>
+                    @if (ViewBag.total != 0)
+                    {
+                        <a asp-controller="order" asp-action="Checkout" class="btn btn-primary">Checkout</a>
+                    }
                 </div>
             </div>
         </div>

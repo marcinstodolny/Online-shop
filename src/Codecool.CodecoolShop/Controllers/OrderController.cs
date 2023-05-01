@@ -1,7 +1,9 @@
-﻿using Codecool.CodecoolShop.Services;
+﻿using Codecool.CodecoolShop.Helpers;
+using Codecool.CodecoolShop.Services;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 
 namespace Codecool.CodecoolShop.Controllers
 {
