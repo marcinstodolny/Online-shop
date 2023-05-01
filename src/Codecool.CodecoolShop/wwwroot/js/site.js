@@ -15,6 +15,12 @@ function hideShippingDetails() {
 
         checkbox.innerHTML = "true";
     } else {
+
+        document.getElementById("shipping-address").innerHTML = "";
+        document.getElementById("shipping-city").value = "";
+        document.getElementById("shipping-country").value = "";
+        document.getElementById("shipping-zipcode").value = "";
+
         shippingDetails.style.display = "block";
         checkbox.innerHTML = "false";
     }
