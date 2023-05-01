@@ -42,22 +42,28 @@
     <textarea id="billing-address" name="BillingAddress"></textarea><br>
     <span validation-for="billing-address"></span>
 
-    <label for="shipping-country">Shipping Country:</label>
-    <input type="text" id="shipping-country" name="ShippingCountry"><br>
-    <span validation-for="shipping-country"></span>
+    <div>
+        <p for="ShippingSameAsBilling"></p>
+        <input type="checkbox" for="ShippingSameAsBilling"> Shipping address same as billing address</>
+    </div>
 
-    <label for="shipping-city">Shipping City:</label>
-    <input type="text" id="shipping-city" name="ShippingCity"><br>
-    <span validation-for="shipping-city"></span>
+    <div id="shipping-details" class="hidden">
+        <label for="shipping-country">Shipping Country:</label>
+        <input type="text" id="shipping-country" name="ShippingCountry"><br>
+        <span validation-for="shipping-country"></span>
 
-    <label for="shipping-zipcode">Shipping Zipcode:</label>
-    <input type="text" id="shipping-zipcode" name="ShippingZipcode"><br>
-    <span validation-for="shipping-zipcode"></span>
+        <label for="shipping-city">Shipping City:</label>
+        <input type="text" id="shipping-city" name="ShippingCity"><br>
+        <span validation-for="shipping-city"></span>
 
-    <label for="shipping-address">Shipping Address:</label>
-    <textarea id="shipping-address" name="ShippingAddress"></textarea><br>
-    <span validation-for="shipping-address"></span>
+        <label for="shipping-zipcode">Shipping Zipcode:</label>
+        <input type="text" id="shipping-zipcode" name="ShippingZipcode"><br>
+        <span validation-for="shipping-zipcode"></span>
 
+        <label for="shipping-address">Shipping Address:</label>
+        <textarea id="shipping-address" name="ShippingAddress"></textarea><br>
+        <span validation-for="shipping-address"></span>
+    </div>
     <input type="submit" value="Go to Payment">
 </form>
 
