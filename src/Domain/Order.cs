@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Codecool.CodecoolShop.Validators;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -23,13 +24,20 @@ namespace Domain
         public string BillingZipcode { get; set; }
         [Required(ErrorMessage = "Billing Address is required")]
         public string BillingAddress { get; set; }
-        [Required(ErrorMessage = "Shipping Country is required")]
+
+        // Shipping address fields
+        public bool ShippingSameAsBilling { get; set; }
+
+        [RequiredIf("ShippingSameAsBilling", false, ErrorMessage = "Shipping Country is required")]
         public string ShippingCountry { get; set; }
-        [Required(ErrorMessage = "Shipping City is required")]
+
+        [RequiredIf("ShippingSameAsBilling", false, ErrorMessage = "Shipping City is required")]
         public string ShippingCity { get; set; }
-        [Required(ErrorMessage = "Shipping ZIP Code is required")]
+
+        [RequiredIf("ShippingSameAsBilling", false, ErrorMessage = "Shipping ZIP Code is required")]
         public string ShippingZipcode { get; set; }
-        [Required(ErrorMessage = "Shipping Address is required")]
+
+        [RequiredIf("ShippingSameAsBilling", false, ErrorMessage = "Shipping Address is required")]
         public string ShippingAddress { get; set; }
     }
 }
