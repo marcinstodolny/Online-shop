@@ -28,7 +28,7 @@ namespace Codecool.CodecoolShop.Controllers
         }
 
         [HttpPost]
-        public IActionResult Checkout([Bind("Name,Description,Email,Phone,BillingCountry,BillingCity,BillingZipcode,BillingAddress,ShippingSameAsBilling,ShippingCountry,ShippingCity,ShippingZipcode,ShippingAddress")] Order order)
+        public IActionResult Checkout(Order order)
         {
             if (order.ShippingSameAsBilling)
             {
