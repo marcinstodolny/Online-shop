@@ -11,35 +11,35 @@
     <div asp-validation-summary="All"></div>
 
     <label for="name">Name:</label>
-    <input type="text" id="name" name="Name"><br>
+    <input type="text" id="name" name="Name" required><br>
     <span validation-for="name"></span>
 
     <label for="description">Description:</label>
-    <input type="text" id="description" name="Description"><br>
+    <input type="text" id="description" name="Description" required><br>
     <span validation-for="description"></span>
 
     <label for="email">Email:</label>
-    <input type="email" id="email" name="Email"><br>
+    <input type="email" id="email" name="Email" required><br>
     <span validation-for="email"></span>
 
     <label for="phone">Phone number:</label>
-    <input type="tel" id="phone" name="Phone"><br>
+    <input type="tel" id="phone" name="Phone" required><br>
     <span validation-for="phone"></span>
 
     <label for="billing-country">Billing Country:</label>
-    <input type="text" id="billing-country" name="BillingCountry"><br>
+    <input type="text" id="billing-country" name="BillingCountry" required><br>
     <span validation-for="billing-country"></span>
 
     <label for="billing-city">Billing City:</label>
-    <input type="text" id="billing-city" name="BillingCity"><br>
+    <input type="text" id="billing-city" name="BillingCity" required><br>
     <span validation-for="billing-city"></span>
     
     <label for="billing-zipcode">Billing Zipcode:</label>
-    <input type="text" id="billing-zipcode" name="BillingZipcode"><br>
+    <input type="text" id="billing-zipcode" name="BillingZipcode" required><br>
     <span validation-for="billing-zipcode"></span>
 
     <label for="billing-address">Billing Address:</label>
-    <textarea id="billing-address" name="BillingAddress"></textarea><br>
+    <textarea id="billing-address" name="BillingAddress" required></textarea><br>
     <span validation-for="billing-address"></span>
 
     <div>
@@ -49,19 +49,19 @@
 
     <div id="shipping-details" class="hidden">
         <label for="shipping-country">Shipping Country:</label>
-        <input type="text" id="shipping-country" name="ShippingCountry"><br>
+        <input type="text" id="shipping-country" name="ShippingCountry" required><br>
         <span validation-for="shipping-country"></span>
 
         <label for="shipping-city">Shipping City:</label>
-        <input type="text" id="shipping-city" name="ShippingCity"><br>
+        <input type="text" id="shipping-city" name="ShippingCity" required><br>
         <span validation-for="shipping-city"></span>
 
         <label for="shipping-zipcode">Shipping Zipcode:</label>
-        <input type="text" id="shipping-zipcode" name="ShippingZipcode"><br>
+        <input type="text" id="shipping-zipcode" name="ShippingZipcode" required><br>
         <span validation-for="shipping-zipcode"></span>
 
         <label for="shipping-address">Shipping Address:</label>
-        <textarea id="shipping-address" name="ShippingAddress"></textarea><br>
+        <textarea id="shipping-address" name="ShippingAddress" required></textarea><br>
         <span validation-for="shipping-address"></span>
     </div>
     <input type="submit" value="Go to Payment">
