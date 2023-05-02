@@ -3,66 +3,67 @@
 @{
     ViewData["Title"] = "Checkout";
 }
+@model Domain.Order;
 
 <h2>Shopping Cart Review</h2>
 
 <form id="checkout-form" method="post" action="/Order/Checkout">
     <h2>Checkout Form</h2>
-    <div asp-validation-summary="All"></div>
+@*    <div asp-validation-summary="All"></div>
+*@
+    <label asp-for="Name">Name:</label>
+    <input asp-for="Name" type="text" class="validate" id="name" name="Name"><br>
+    <span asp-validation-for="Name"></span>
 
-    <label for="name">Name:</label>
-    <input type="text" class="validate" id="name" name="Name" required><br>
-    <span validation-for="name"></span>
+    <label asp-for="Description">Description:</label>
+    <input asp-for="Description" type="text" class="validate" id="description" name="Description"><br>
+    <span asp-validation-for="Description"></span>
 
-    <label for="description">Description:</label>
-    <input type="text" class="validate" id="description" name="Description" required><br>
-    <span validation-for="description"></span>
+    <label asp-for="Email">Email:</label>
+    <input asp-for="Email" type="email" class="validate" id="email" name="Email"><br>
+    <span asp-validation-for="Email"></span>
 
-    <label for="email">Email:</label>
-    <input type="email" class="validate" id="email" name="Email" required><br>
-    <span validation-for="email"></span>
+    <label asp-for="Phone">Phone number:</label>
+    <input asp-for="Phone" type="tel" class="validate" id="phone" name="Phone"><br>
+    <span asp-validation-for="Phone"></span>
 
-    <label for="phone">Phone number:</label>
-    <input type="tel" class="validate" id="phone" name="Phone" required><br>
-    <span validation-for="phone"></span>
+    <label asp-for="BillingCountry">Billing Country:</label>
+    <input asp-for="BillingCountry" type="text" class="validate" id="billing-country" name="BillingCountry"><br>
+    <span asp-validation-for="BillingCountry"></span>
 
-    <label for="billing-country">Billing Country:</label>
-    <input type="text" class="validate" id="billing-country" name="BillingCountry" required><br>
-    <span validation-for="billing-country"></span>
-
-    <label for="billing-city">Billing City:</label>
-    <input type="text" class="validate" id="billing-city" name="BillingCity" required><br>
-    <span validation-for="billing-city"></span>
+    <label asp-for="BillingCity">Billing City:</label>
+    <input asp-for="BillingCity" type="text" class="validate" id="billing-city" name="BillingCity"><br>
+    <span asp-validation-for="BillingCity"></span>
     
-    <label for="billing-zipcode">Billing Zipcode:</label>
-    <input type="text" class="validate" id="billing-zipcode" name="BillingZipcode" required><br>
-    <span validation-for="billing-zipcode"></span>
+    <label asp-for="BillingZipcode">Billing Zipcode:</label>
+    <input asp-for="BillingZipcode" type="text" class="validate" id="billing-zipcode" name="BillingZipcode"><br>
+    <span asp-validation-for="BillingZipcode"></span>
 
-    <label for="billing-address">Billing Address:</label>
-    <textarea class="validate" id="billing-address" name="BillingAddress" required></textarea><br>
-    <span validation-for="billing-address"></span>
+    <label asp-for="BillingAddress">Billing Address:</label>
+    <textarea asp-for="BillingAddress" class="validate" id="billing-address" name="BillingAddress"></textarea><br>
+    <span asp-validation-for="BillingAddress"></span>
 
     <div>
-        <label for="same-as-billing">Same address as billing </label>
-        <input class="validate" type="checkbox" onclick="hideShippingDetails()" id="same-as-billing" name="ShippingSameAsBilling" value="true">
+        <label asp-for="ShippingSameAsBilling">Same address as billing </label>
+        <input asp-for="ShippingSameAsBilling" class="validate" type="checkbox" onclick="hideShippingDetails()" id="same-as-billing" name="ShippingSameAsBilling" value="true">
     </div>
 
     <div id="shipping-details" class="hidden">
-        <label for="shipping-country">Shipping Country:</label>
-        <input class="validate" type="text" id="shipping-country" name="ShippingCountry" required><br>
+        <label asp-for="ShippingCountry">Shipping Country:</label>
+        <input asp-for="ShippingCountry" class="validate" type="text" id="shipping-country" name="ShippingCountry"><br>
         <span validation-for="shipping-country"></span>
 
-        <label for="shipping-city">Shipping City:</label>
-        <input class="validate" type="text" id="shipping-city" name="ShippingCity" required><br>
-        <span validation-for="shipping-city"></span>
+        <label asp-for="ShippingCity">Shipping City:</label>
+        <input asp-for="ShippingCity" class="validate" type="text" id="shipping-city" name="ShippingCity"><br>
+        <span asp-validation-for="ShippingCity"></span>
 
-        <label for="shipping-zipcode">Shipping Zipcode:</label>
-        <input type="text" class="validate" id="shipping-zipcode" name="ShippingZipcode" required><br>
-        <span validation-for="shipping-zipcode"></span>
+        <label asp-for="ShippingZipcode">Shipping Zipcode:</label>
+        <input asp-for="ShippingZipcode" type="text" class="validate" id="shipping-zipcode" name="ShippingZipcode"><br>
+        <span asp-validation-for="ShippingZipcode"></span>
 
-        <label for="shipping-address">Shipping Address:</label>
-        <textarea id="shipping-address" class="validate" name="ShippingAddress" required></textarea><br>
-        <span validation-for="shipping-address"></span>
+        <label asp-for="ShippingAddress">Shipping Address:</label>
+        <textarea asp-for="ShippingAddress" id="shipping-address" class="validate" name="ShippingAddress"></textarea><br>
+        <span asp-validation-for="ShippingAddress"></span>
     </div>
     <input type="submit" onclick="validate()" value="Go to Payment">
 </form>
