@@ -1,23 +1,22 @@
 ﻿using Codecool.CodecoolShop.Validators;
-using System;
-using System.Collections.Generic;
+using Domain.Validators;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain
 {
     public class Order : BaseModel
     {
-        [Required(ErrorMessage = "Email is required")]
+        [DisplayName("Email address")]
+        [Required(ErrorMessage = "Email address is required")]
         [EmailAddress(ErrorMessage = "Invalid email")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Phone is required")]
-        [Phone(ErrorMessage = "invalid phone format")]
+        [DisplayName("Phone number")]
+        [Required(ErrorMessage = "Phone number is required")]
+        [ValidatePhone(ErrorMessage = "Phone number must be at least 6 digits long.")]
+        [Phone(ErrorMessage = "Invalid phone format")]
         public string Phone { get; set; }
 
         [DisplayName("Billing Country")]
