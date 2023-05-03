@@ -15,7 +15,7 @@
     <input asp-for="Name" type="text" class="validate" id="name" name="Name">
     <span asp-validation-for="Name"></span><br>
 
-    <label for="Description">Description:</label>
+    <label for="description">Description:</label>
     <input for="Description" type="text" id="description" name="Description"><br>
 
     <label asp-for="Email">Email:</label>
@@ -47,7 +47,7 @@
         <input asp-for="ShippingSameAsBilling" class="validate" type="checkbox" onclick="hideShippingDetails()" id="same-as-billing" name="ShippingSameAsBilling" value="true">
     </div>
 
-    <div id="shipping-details" class="hidden">
+    <div id="shipping-details">
         <label asp-for="ShippingCountry">Shipping Country:</label>
         <input asp-for="ShippingCountry" class="validate" type="text" id="shipping-country" name="ShippingCountry">
         <span asp-validation-for="ShippingCountry"></span><br>
