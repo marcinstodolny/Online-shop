@@ -15,7 +15,7 @@ namespace Domain
 
         [DisplayName("Phone number")]
         [Required(ErrorMessage = "Phone number is required")]
-        [ValidatePhone(ErrorMessage = "Phone number must be at least 6 digits long.")]
+        [ValidatePhone(ErrorMessage = "Phone number must be digits only and at least 6 digits long.")]
         [Phone(ErrorMessage = "Invalid phone format")]
         public string Phone { get; set; }
 

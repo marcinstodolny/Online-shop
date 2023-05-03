@@ -16,7 +16,7 @@ namespace Domain
         [Required(ErrorMessage = "Name is required")]
         public string Name { get; set; }
 
-        [Required, BindNever]
+        [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }
     }
 }
