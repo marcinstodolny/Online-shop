@@ -9,8 +9,7 @@
 
 <form id="checkout-form" method="post" action="/Order/Checkout">
     <h2>Checkout Form</h2>
-@*    <div asp-validation-summary="All"></div>
-*@
+
     <label asp-for="Name">Name:</label>
     <input asp-for="Name" type="text" class="validate" id="name" name="Name">
     <span asp-validation-for="Name"></span><br>

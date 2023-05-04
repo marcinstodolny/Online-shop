@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
+using Domain.Payments;
 
 namespace Codecool.CodecoolShop.Controllers
 {
@@ -45,19 +46,24 @@ namespace Codecool.CodecoolShop.Controllers
             return View("Checkout");
         }
 
-        public IActionResult Payment(Order order)
+        public IActionResult Payment()
         {
             var cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart");
             var totalPrice = cart.Sum(item => item.Product.DefaultPrice * item.Quantity);
-            //ViewBag.Cart = cart;
             ViewBag.TotalPrice = totalPrice;
             return View();
         }
 
         [HttpPost]
-        public IActionResult Payment()
+        public IActionResult Payment(CreditCard creditCard)
         {
-            return RedirectToAction("Confirmation");
+            if (ModelState.IsValid)
+            {
+                _logger.LogInformation($"Payment details are correct for the credit card number {creditCard.CardNumber}");
+                return RedirectToAction("Confirmation");
+            }
+            _logger.LogInformation($"Payment details are incorrect or invalid for the credit card number {creditCard.CardNumber}");
+            return RedirectToAction("Payment");
         }
 
         public IActionResult Confirmation()

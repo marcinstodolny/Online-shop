@@ -37,5 +37,10 @@ function validate() {
         } else {
             inputs[i].style.borderColor = "green";
         }
-    }    
+    }  
+    if (isFormValid) {
+        document.getElementById("pay-button").disabled = false;
+    } else {
+        document.getElementById("pay-button").disabled = true;
+    }
 }

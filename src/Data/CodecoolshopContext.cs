@@ -1,4 +1,5 @@
 ﻿using Domain;
+using Domain.Payments;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;

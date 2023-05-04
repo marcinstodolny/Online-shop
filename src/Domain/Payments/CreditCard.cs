@@ -10,7 +10,6 @@ using Microsoft.VisualBasic;
 
 namespace Domain.Payments
 {
-    [NotMapped]
     public class CreditCard
     {
         [DisplayName("Card number")]
