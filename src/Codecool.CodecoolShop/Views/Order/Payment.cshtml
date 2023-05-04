@@ -4,8 +4,6 @@
 }
 @model Domain.Payments.CreditCard;
 
-    <div asp-validation-summary="All"></div>
-
 <div class="container">
     <h3 class="mt-4 mb-4">Payment checkout</h3>
     <form id="checkout-form" method="post" action="/Order/Confirmation">
@@ -16,10 +14,10 @@
                 <div class="card-body">
                     <h5 class="card-title">Payment options</h5>
                     <div>
-                        <label for="credit-card">Pay by card </label>
-                        <input type="checkbox" id="credit-card">
+                        <label for="credit-card-checkbox">Pay by card </label>
+                        <input asp-for="PayWithCreditCard"  type="checkbox" id="credit-card-checkbox" onclick="showCreditCardDetails()" name="PayWithCreditCard" value="false">
                     </div>
-                    <div>
+                    <div id="credit-card-details" class="hidden">
                         <label asp-for="CardHolder">Card Holder Name:</label>
                         <input asp-for="CardHolder" type="text" class="validate" name="CardHolder">
                         <span asp-validation-for="CardHolder"></span><br>
@@ -35,7 +33,6 @@
                         <label asp-for="CVV">CVV:</label>
                         <input asp-for="CVV" type="text" class="validate" name="CVV">
                         <span asp-validation-for="CVV"></span><br>
-
                     </div>
                 </div>
             </div>

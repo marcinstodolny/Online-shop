@@ -38,7 +38,7 @@ namespace Codecool.CodecoolShop.Controllers
 
             if (ModelState.IsValid)
             {
-                _orderService.AddOrder(order);
+                //_orderService.AddOrder(order);
                 _logger.LogInformation($"Checkout order completed for order id: {order.Id}");
                 return RedirectToAction("Payment");
             }

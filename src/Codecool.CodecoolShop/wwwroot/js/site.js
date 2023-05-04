@@ -38,9 +38,17 @@ function validate() {
             inputs[i].style.borderColor = "green";
         }
     }  
-    if (isFormValid) {
-        document.getElementById("pay-button").disabled = false;
+}
+
+// ********* | Payment site | ************
+function showCreditCardDetails() {
+    let creditCardDetails = document.getElementById("credit-card-details");
+    let checkbox = document.getElementById("credit-card-checkbox");
+    if (checkbox.checked) {
+        creditCardDetails.style.display = "block";
+        checkbox.value = "true";
     } else {
-        document.getElementById("pay-button").disabled = true;
+        creditCardDetails.style.display = "none";
+        checkbox.value = "false";
     }
 }

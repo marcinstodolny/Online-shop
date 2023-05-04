@@ -12,6 +12,8 @@ namespace Domain.Payments
 {
     public class CreditCard
     {
+        public bool PayWithCreditCard { get; set; }
+
         [DisplayName("Card number")]
         [Required(ErrorMessage = "Card number is required")]
         public int CardNumber { get; set; }

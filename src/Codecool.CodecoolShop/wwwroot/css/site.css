@@ -92,3 +92,7 @@ input[type="number"].no-arrows::-webkit-outer-spin-button {
 input[type="number"].no-arrows {
     -moz-appearance: textfield;
 }
+
+.hidden {
+    display: none;
+}
