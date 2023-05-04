@@ -15,7 +15,7 @@
                     <h5 class="card-title">Payment options</h5>
                     <div>
                         <label for="credit-card-checkbox">Pay by card </label>
-                        <input asp-for="PayWithCreditCard"  type="checkbox" id="credit-card-checkbox" onclick="showCreditCardDetails()" name="PayWithCreditCard" value="false">
+                        <input asp-for="PayWithCreditCard"  type="checkbox" id="credit-card-checkbox" class="validate" onclick="showCreditCardDetails()" name="PayWithCreditCard" value="true">
                     </div>
                     <div id="credit-card-details" class="hidden">
                         <label asp-for="CardHolder">Card Holder Name:</label>
@@ -44,7 +44,7 @@
                     <p class="card-text">
                         <span class="mr-auto">Total Price: @((@ViewBag.TotalPrice).ToString("C2", new CultureInfo("en-US")))</span>
                     </p>
-                    <input type="submit" id="pay-button" class="btn btn-primary" onclick="validate()" value="Confirm and Pay">
+                    <input type="submit" id="pay-button" class="btn btn-primary hidden" onclick="validate()" value="Confirm and Pay">
                 </div>
             </div>
         </div>
