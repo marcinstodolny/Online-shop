@@ -6,8 +6,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain
 {
-    public class Order : BaseModel
+    public class Order
     {
+        [Key]
+        public int Id { get; set; }
+
+        [Required(ErrorMessage = "Name is required")]
+        public string Name { get; set; }
+
         [DisplayName("Email address")]
         [Required(ErrorMessage = "Email address is required")]
         [EmailAddress(ErrorMessage = "Invalid email")]
