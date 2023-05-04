@@ -93,6 +93,7 @@ input[type="number"].no-arrows {
     -moz-appearance: textfield;
 }
 
+/* Used for checkboxes to hide div element/s */
 .hidden {
     display: none;
 }
