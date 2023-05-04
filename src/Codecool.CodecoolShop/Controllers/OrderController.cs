@@ -4,6 +4,7 @@ using Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Codecool.CodecoolShop.Controllers
 {
@@ -11,6 +12,7 @@ namespace Codecool.CodecoolShop.Controllers
     {
         private readonly ILogger<ProductController> _logger;
         private IOrderService _orderService;
+
         public OrderController(ILogger<ProductController> logger, IOrderService orderService)
         {
             _logger = logger;
@@ -24,6 +26,10 @@ namespace Codecool.CodecoolShop.Controllers
 
         public IActionResult Payment()
         {
+            var cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart");
+            var totalPrice = cart.Sum(item => item.Product.DefaultPrice * item.Quantity);
+            //ViewBag.Cart = cart;
+            ViewBag.TotalPrice = totalPrice;
             return View();
         }
 
@@ -41,9 +47,10 @@ namespace Codecool.CodecoolShop.Controllers
             if (ModelState.IsValid)
             {
                 _orderService.AddOrder(order);
+                _logger.LogInformation($"Checkout order completed for order id: {order.Id}");
                 return RedirectToAction("Payment");
             }
-
+            _logger.LogInformation($"Checkout order not valid for order id: {order.Id}");
             return View("Checkout");
         }
 

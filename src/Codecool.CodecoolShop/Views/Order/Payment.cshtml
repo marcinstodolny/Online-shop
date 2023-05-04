@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "Checkout";
 }
-@model Domain.Item
 
 <p>Payment</p>
-<span class="mr-auto">Price: @((@Model.Product.DefaultPrice * @Model.Quantity).ToString("C2", new CultureInfo("en-US")))</span>
+<span class="mr-auto">Total Price: @((@ViewBag.TotalPrice).ToString("C2", new CultureInfo("en-US")))</span>
