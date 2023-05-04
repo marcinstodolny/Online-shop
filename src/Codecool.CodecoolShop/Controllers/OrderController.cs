@@ -59,10 +59,10 @@ namespace Codecool.CodecoolShop.Controllers
         {
             if (ModelState.IsValid)
             {
-                _logger.LogInformation($"Payment details are correct for the credit card number {creditCard.CardNumber}");
+                _logger.LogError($"Payment details are correct for the credit card number {creditCard.CardNumber}");
                 return RedirectToAction("Confirmation");
             }
-            _logger.LogInformation($"Payment details are incorrect or invalid for the credit card number {creditCard.CardNumber}");
+            _logger.LogError($"Payment details are incorrect or invalid for the credit card number {creditCard.CardNumber}");
             return RedirectToAction("Payment");
         }
 

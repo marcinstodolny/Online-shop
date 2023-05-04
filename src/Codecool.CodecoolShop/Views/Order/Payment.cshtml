@@ -6,7 +6,7 @@
 
 <div class="container">
     <h3 class="mt-4 mb-4">Payment checkout</h3>
-    <form id="checkout-form" method="post" action="/Order/Confirmation">
+    <form id="checkout-form" method="post" action="/Order/Payment">
 
     <div class="row">
         <div class="col-md-4">
@@ -27,9 +27,9 @@
                         <span asp-validation-for="CardNumber"></span><br>
                             
                         <label asp-for="ExpiryDate">Expiry Date:</label>
-                        <input asp-for="ExpiryDate" type="text" class="validate" name="ExpiryDate">
+                        <input asp-for="ExpiryDate" type="text" class="validate" name="ExpiryDate" placeholder="MM/YYYY">
                         <span asp-validation-for="ExpiryDate"></span><br>
-                            
+
                         <label asp-for="CVV">CVV:</label>
                         <input asp-for="CVV" type="text" class="validate" name="CVV">
                         <span asp-validation-for="CVV"></span><br>
