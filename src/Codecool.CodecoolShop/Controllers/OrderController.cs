@@ -24,15 +24,6 @@ namespace Codecool.CodecoolShop.Controllers
             return View();
         }
 
-        public IActionResult Payment()
-        {
-            var cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart");
-            var totalPrice = cart.Sum(item => item.Product.DefaultPrice * item.Quantity);
-            //ViewBag.Cart = cart;
-            ViewBag.TotalPrice = totalPrice;
-            return View();
-        }
-
         [HttpPost]
         public IActionResult Checkout(Order order)
         {
@@ -54,6 +45,24 @@ namespace Codecool.CodecoolShop.Controllers
             return View("Checkout");
         }
 
-        
+        public IActionResult Payment(Order order)
+        {
+            var cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart");
+            var totalPrice = cart.Sum(item => item.Product.DefaultPrice * item.Quantity);
+            //ViewBag.Cart = cart;
+            ViewBag.TotalPrice = totalPrice;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Payment()
+        {
+            return RedirectToAction("Confirmation");
+        }
+
+        public IActionResult Confirmation()
+        {
+            return View();
+        }
     }
 }
