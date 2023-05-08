@@ -110,29 +110,4 @@ namespace Codecool.CodecoolShop.Controllers
             return Update(id, quantity);
         }
     }
-    //public class CartController : Controller
-    //{
-    //    private readonly ILogger<ProductController> _logger;
-    //    private CodecoolshopContext _context;
-
-    //    public CartController(ILogger<ProductController> logger, CodecoolshopContext context)
-    //    {
-    //        _logger = logger;
-    //        _context = context;
-    //    }
-
-    //    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    //    public IActionResult Error()
-    //    {
-    //        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    //    }
-    //    public IActionResult Index()
-    //    {
-
-    //        //var products = ProductService.GetProductsForCategory(1);
-    //        _logger.LogInformation("Opened index page");
-    //        var pr = _context.Carts.ToList();
-    //        return View(pr);
-    //    }
-    //}
 }

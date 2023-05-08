@@ -2,6 +2,8 @@
 using Data;
 using Domain;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Codecool.CodecoolShop.Services
 {
@@ -21,5 +23,7 @@ namespace Codecool.CodecoolShop.Services
             _context.Orders.Add(order);
             _context.SaveChanges();
         }
+
+        public List<Domain.Order> GetAllOrders() => _context.Orders.ToList();
     }
 }

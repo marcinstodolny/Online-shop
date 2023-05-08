@@ -2,5 +2,11 @@
 @{
     ViewData["Title"] = "Confirmation";
 }
-
-<p>Confirmed</p>
+@model Domain.Order
+<p>Payment has been confirmed</p>
+<p>Order ID : @Model.Id</p>
+<p>Name : @Model.Name</p>
+@foreach (var order in @ViewBag.cart)
+{
+    <p>@order.Product.Name</p>
+}

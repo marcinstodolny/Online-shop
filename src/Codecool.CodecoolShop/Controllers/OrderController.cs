@@ -13,7 +13,6 @@ namespace Codecool.CodecoolShop.Controllers
     {
         private readonly ILogger<ProductController> _logger;
         private IOrderService _orderService;
-        private string _paymentError;
 
         public OrderController(ILogger<ProductController> logger, IOrderService orderService)
         {
@@ -40,6 +39,7 @@ namespace Codecool.CodecoolShop.Controllers
             if (ModelState.IsValid)
             {
                 //_orderService.AddOrder(order);
+                HttpContext.Session.SetObjectAsJson("orderDetails", order);
                 _logger.LogInformation($"Checkout order completed for order id: {order.Id}");
                 return RedirectToAction("Payment");
             }
@@ -47,7 +47,7 @@ namespace Codecool.CodecoolShop.Controllers
             return View("Checkout");
         }
 
-        public IActionResult Payment()
+        public IActionResult Payment(Order order)
         {
             var cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart");
             var totalPrice = cart.Sum(item => item.Product.DefaultPrice * item.Quantity);
@@ -76,7 +76,11 @@ namespace Codecool.CodecoolShop.Controllers
 
         public IActionResult Confirmation()
         {
-            return View();
+            var cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart") ?? new List<Item>();
+            ViewBag.cart = cart;
+            //var order = _orderService.GetAllOrders();
+            var order = HttpContext.Session.GetObjectFromJson<Order>("orderDetails");
+            return View(order);
         }
     }
 }
