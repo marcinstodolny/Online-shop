@@ -13,6 +13,7 @@ namespace Codecool.CodecoolShop.Controllers
     {
         private readonly ILogger<ProductController> _logger;
         private IOrderService _orderService;
+        private string _paymentError;
 
         public OrderController(ILogger<ProductController> logger, IOrderService orderService)
         {
@@ -51,6 +52,8 @@ namespace Codecool.CodecoolShop.Controllers
             var cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart");
             var totalPrice = cart.Sum(item => item.Product.DefaultPrice * item.Quantity);
             ViewBag.TotalPrice = totalPrice;
+            ViewBag.paymentMessage = HttpContext.Session.GetObjectFromJson<string>("paymentMessage");
+            HttpContext.Session.Remove("paymentMessage");
             return View();
         }
 
@@ -62,7 +65,12 @@ namespace Codecool.CodecoolShop.Controllers
                 _logger.LogError($"Payment details are correct for the credit card number {creditCard.CardNumber}");
                 return RedirectToAction("Confirmation");
             }
+
+            var lastFourDigits = 4;
+            var paymentMessage =
+                $"Payment details are incorrect or invalid for the credit card ending number {creditCard.CardNumber.Substring(creditCard.CardNumber.Length - lastFourDigits)}";
             _logger.LogError($"Payment details are incorrect or invalid for the credit card number {creditCard.CardNumber}");
+            HttpContext.Session.SetObjectAsJson("paymentMessage", paymentMessage);
             return RedirectToAction("Payment");
         }
 

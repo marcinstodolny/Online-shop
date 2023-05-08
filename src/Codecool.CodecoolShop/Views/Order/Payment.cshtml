@@ -34,6 +34,10 @@
                         <input asp-for="CVV" type="text" class="validate" name="CVV">
                         <span asp-validation-for="CVV"></span><br>
                     </div>
+                    @if (!string.IsNullOrEmpty(@ViewBag.paymentMessage))
+                    {
+                        <strong>@ViewBag.paymentMessage</strong>
+                    }
                 </div>
             </div>
         </div><br>
