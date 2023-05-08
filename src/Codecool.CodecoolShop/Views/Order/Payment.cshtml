@@ -1,0 +1,53 @@
+﻿@using System.Globalization
+@{
+    ViewData["Title"] = "Payment";
+}
+@model Domain.Payments.CreditCard;
+
+<div class="container">
+    <h3 class="mt-4 mb-4">Payment checkout</h3>
+    <form id="checkout-form" method="post" action="/Order/Payment">
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card border border-secondary">
+                <div class="card-body">
+                    <h5 class="card-title">Payment options</h5>
+                    <div>
+                        <label for="credit-card-checkbox">Pay by card </label>
+                        <input asp-for="PayWithCreditCard"  type="checkbox" id="credit-card-checkbox" class="validate" onclick="showCreditCardDetails()" name="PayWithCreditCard" value="true">
+                    </div>
+                    <div id="credit-card-details" class="hidden">
+                        <label asp-for="CardHolder">Card Holder Name:</label>
+                        <input asp-for="CardHolder" type="text" class="validate" name="CardHolder">
+                        <span asp-validation-for="CardHolder"></span><br>
+                            
+                        <label asp-for="CardNumber">Card Number:</label>
+                        <input asp-for="CardNumber" type="text" class="validate" name="CardNumber">
+                        <span asp-validation-for="CardNumber"></span><br>
+                            
+                        <label asp-for="ExpiryDate">Expiry Date:</label>
+                        <input asp-for="ExpiryDate" type="text" class="validate" name="ExpiryDate" placeholder="MM/YYYY">
+                        <span asp-validation-for="ExpiryDate"></span><br>
+
+                        <label asp-for="CVV">CVV:</label>
+                        <input asp-for="CVV" type="text" class="validate" name="CVV">
+                        <span asp-validation-for="CVV"></span><br>
+                    </div>
+                </div>
+            </div>
+        </div><br>
+        <div class="col-md-4">
+            <div class="card border border-secondary">
+                <div class="card-body">
+                    <h5 class="card-title">Total</h5>
+                    <p class="card-text">
+                        <span class="mr-auto">Total Price: @((@ViewBag.TotalPrice).ToString("C2", new CultureInfo("en-US")))</span>
+                    </p>
+                    <input type="submit" id="pay-button" class="btn btn-primary hidden" onclick="validate()" value="Confirm and Pay">
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>

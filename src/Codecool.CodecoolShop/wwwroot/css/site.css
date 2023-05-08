@@ -7,6 +7,16 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+<<<<<<< HEAD
+=======
+/* Provide inline labels and input for any form*/
+label {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+}
+
+>>>>>>> origin/remove-daos
 /* Provide sufficient contrast against white background */
 a {
   color: #0366d6;
@@ -69,3 +79,27 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+<<<<<<< HEAD
+=======
+
+.cart-link {
+    font-weight: bold;
+    color: #007bff;
+    font-size: 1.2rem
+}
+
+input[type="number"].no-arrows::-webkit-inner-spin-button,
+input[type="number"].no-arrows::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"].no-arrows {
+    -moz-appearance: textfield;
+}
+
+/* Used for checkboxes to hide div element/s */
+.hidden {
+    display: none;
+}
+>>>>>>> origin/remove-daos

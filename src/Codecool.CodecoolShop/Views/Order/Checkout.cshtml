@@ -1,0 +1,65 @@
+﻿@using System.Globalization
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Checkout";
+}
+@model Domain.Order;
+
+<h2>Shopping Cart Review</h2>
+
+<form id="checkout-form" method="post" action="/Order/Checkout">
+    <h2>Checkout Form</h2>
+
+    <label asp-for="Name">Name:</label>
+    <input asp-for="Name" type="text" class="validate" id="name" name="Name">
+    <span asp-validation-for="Name"></span><br>
+
+    <label asp-for="Email">Email:</label>
+    <input asp-for="Email" type="email" class="validate" id="email" name="Email">
+    <span asp-validation-for="Email"></span><br>
+
+    <label asp-for="Phone">Phone number:</label>
+    <input asp-for="Phone" type="tel" class="validate" id="phone" name="Phone">
+    <span asp-validation-for="Phone"></span><br>
+
+    <label asp-for="BillingCountry">Billing Country:</label>
+    <input asp-for="BillingCountry" type="text" class="validate" id="billing-country" name="BillingCountry">
+    <span asp-validation-for="BillingCountry"></span><br>
+
+    <label asp-for="BillingCity">Billing City:</label>
+    <input asp-for="BillingCity" type="text" class="validate" id="billing-city" name="BillingCity">
+    <span asp-validation-for="BillingCity"></span><br>
+    
+    <label asp-for="BillingZipcode">Billing Zipcode:</label>
+    <input asp-for="BillingZipcode" type="text" class="validate" id="billing-zipcode" name="BillingZipcode">
+    <span asp-validation-for="BillingZipcode"></span><br>
+
+    <label asp-for="BillingAddress">Billing Address:</label>
+    <textarea asp-for="BillingAddress" class="validate" id="billing-address" name="BillingAddress"></textarea>
+    <span asp-validation-for="BillingAddress"></span><br>
+
+    <div>
+        <label asp-for="ShippingSameAsBilling">Same address as billing </label>
+        <input asp-for="ShippingSameAsBilling" class="validate" type="checkbox" onclick="hideShippingDetails()" id="same-as-billing" name="ShippingSameAsBilling" value="true">
+    </div>
+
+    <div id="shipping-details">
+        <label asp-for="ShippingCountry">Shipping Country:</label>
+        <input asp-for="ShippingCountry" class="validate" type="text" id="shipping-country" name="ShippingCountry">
+        <span asp-validation-for="ShippingCountry"></span><br>
+
+        <label asp-for="ShippingCity">Shipping City:</label>
+        <input asp-for="ShippingCity" class="validate" type="text" id="shipping-city" name="ShippingCity">
+        <span asp-validation-for="ShippingCity"></span><br>
+
+        <label asp-for="ShippingZipcode">Shipping Zipcode:</label>
+        <input asp-for="ShippingZipcode" type="text" class="validate" id="shipping-zipcode" name="ShippingZipcode">
+        <span asp-validation-for="ShippingZipcode"></span><br>
+
+        <label asp-for="ShippingAddress">Shipping Address:</label>
+        <textarea asp-for="ShippingAddress" id="shipping-address" class="validate" name="ShippingAddress"></textarea>
+        <span asp-validation-for="ShippingAddress"></span><br>
+    </div>
+    <input type="submit" class="btn btn-primary" onclick="validate()" value="Go to Payment">
+</form>
+

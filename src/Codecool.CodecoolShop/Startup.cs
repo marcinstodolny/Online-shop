@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,22 +12,63 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+=======
+using Codecool.CodecoolShop.Services;
+using Data;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Serilog;
+>>>>>>> origin/remove-daos
 
 namespace Codecool.CodecoolShop
 {
     public class Startup
     {
+<<<<<<< HEAD
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+=======
+
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+            
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.Console()
+                .WriteTo.File("log.txt")
+                .CreateLogger();
+
+            Log.Information("Inside Startup ctor");
+>>>>>>> origin/remove-daos
         }
 
         public IConfiguration Configuration { get; }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/remove-daos
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+<<<<<<< HEAD
+=======
+            services.AddDbContext<CodecoolshopContext>(opt =>
+                opt.UseSqlServer(Configuration.GetConnectionString("CodecoolShopConnectionString")));
+            services.AddSession();
+            //services.AddSingleton(Configuration);
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ICartService, CartService>();
+            services.AddScoped<IOrderService, OrderService>();
+>>>>>>> origin/remove-daos
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,8 +85,17 @@ namespace Codecool.CodecoolShop
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+<<<<<<< HEAD
             app.UseStaticFiles();
 
+=======
+            app.UseSession();
+            app.UseStaticFiles();
+
+
+            app.UseSerilogRequestLogging();          
+
+>>>>>>> origin/remove-daos
             app.UseRouting();
 
             app.UseAuthorization();
@@ -56,6 +107,7 @@ namespace Codecool.CodecoolShop
                     pattern: "{controller=Product}/{action=Index}/{id?}");
             });
 
+<<<<<<< HEAD
             SetupInMemoryDatabases();
         }
 
@@ -75,5 +127,26 @@ namespace Codecool.CodecoolShop
             productDataStore.Add(new Product { Name = "Lenovo IdeaPad Miix 700", DefaultPrice = 479.0m, Currency = "USD", Description = "Keyboard cover is included. Fanless Core m5 processor. Full-size USB ports. Adjustable kickstand.", ProductCategory = tablet, Supplier = lenovo });
             productDataStore.Add(new Product { Name = "Amazon Fire HD 8", DefaultPrice = 89.0m, Currency = "USD", Description = "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", ProductCategory = tablet, Supplier = amazon });
         }
+=======
+            //SetupInMemoryDatabases();
+        }
+
+        //private void SetupInMemoryDatabases()
+        //{
+        //    IProductDao productDataStore = ProductDaoMemory.GetInstance();
+        //    IProductCategoryDao productCategoryDataStore = ProductCategoryDaoMemory.GetInstance();
+        //    ISupplierDao supplierDataStore = SupplierDaoMemory.GetInstance();
+
+        //    Supplier amazon = new Supplier{Name = "Amazon", Description = "Digital content and services"};
+        //    supplierDataStore.Add(amazon);
+        //    Supplier lenovo = new Supplier{Name = "Lenovo", Description = "Computers"};
+        //    supplierDataStore.Add(lenovo);
+        //    ProductCategory tablet = new ProductCategory {Name = "Tablet", Department = "Hardware", Description = "A tablet computer, commonly shortened to tablet, is a thin, flat mobile computer with a touchscreen display." };
+        //    productCategoryDataStore.Add(tablet);
+        //    productDataStore.Add(new Product { Name = "Amazon Fire", DefaultPrice = 49.9m, Currency = "USD", Description = "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", ProductCategory = tablet, Supplier = amazon });
+        //    productDataStore.Add(new Product { Name = "Lenovo IdeaPad Miix 700", DefaultPrice = 479.0m, Currency = "USD", Description = "Keyboard cover is included. Fanless Core m5 processor. Full-size USB ports. Adjustable kickstand.", ProductCategory = tablet, Supplier = lenovo });
+        //    productDataStore.Add(new Product { Name = "Amazon Fire HD 8", DefaultPrice = 89.0m, Currency = "USD", Description = "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", ProductCategory = tablet, Supplier = amazon });
+        //}
+>>>>>>> origin/remove-daos
     }
 }

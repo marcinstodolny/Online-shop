@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30621.155
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codecool.CodecoolShop", "Codecool.CodecoolShop\Codecool.CodecoolShop.csproj", "{3A1D177E-B0B1-4755-8E0A-84320E63D4AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codecool.CodecoolShop", "Codecool.CodecoolShop\Codecool.CodecoolShop.csproj", "{3A1D177E-B0B1-4755-8E0A-84320E63D4AA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{E575B5F7-D688-432F-888B-96CD2C077BDD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{C5E0F0DD-E1D0-4D8F-908B-1E95C4C5E1E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{3A1D177E-B0B1-4755-8E0A-84320E63D4AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A1D177E-B0B1-4755-8E0A-84320E63D4AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A1D177E-B0B1-4755-8E0A-84320E63D4AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E575B5F7-D688-432F-888B-96CD2C077BDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E575B5F7-D688-432F-888B-96CD2C077BDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E575B5F7-D688-432F-888B-96CD2C077BDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E575B5F7-D688-432F-888B-96CD2C077BDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5E0F0DD-E1D0-4D8F-908B-1E95C4C5E1E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5E0F0DD-E1D0-4D8F-908B-1E95C4C5E1E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5E0F0DD-E1D0-4D8F-908B-1E95C4C5E1E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5E0F0DD-E1D0-4D8F-908B-1E95C4C5E1E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
