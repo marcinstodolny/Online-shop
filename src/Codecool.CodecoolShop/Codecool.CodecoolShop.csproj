@@ -1,16 +1,11 @@
-<<<<<<< HEAD
+
 <Project Sdk="Microsoft.NET.Sdk.Web">
-=======
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
->>>>>>> origin/remove-daos
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
-<<<<<<< HEAD
-</Project>
-=======
+
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5">
       <PrivateAssets>all</PrivateAssets>
@@ -33,4 +28,3 @@
   </ItemGroup>
 
 </Project>
->>>>>>> origin/remove-daos
