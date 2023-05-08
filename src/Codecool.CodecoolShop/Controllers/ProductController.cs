@@ -1,18 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Codecool.CodecoolShop.Daos;
-using Codecool.CodecoolShop.Daos.Implementations;
+using Codecool.CodecoolShop.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Codecool.CodecoolShop.Models;
-using Codecool.CodecoolShop.Services;
-using Data;
-using Domain;
-using Microsoft.EntityFrameworkCore;
-using Product = Domain.Product;
+using System.Diagnostics;
+using System.Linq;
 
 namespace Codecool.CodecoolShop.Controllers
 {
@@ -58,7 +49,8 @@ namespace Codecool.CodecoolShop.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            throw new NotImplementedException();
+            //View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

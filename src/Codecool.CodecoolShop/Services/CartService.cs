@@ -1,12 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Codecool.CodecoolShop.Controllers;
-using Codecool.CodecoolShop.Daos;
-using Codecool.CodecoolShop.Models;
+﻿using Codecool.CodecoolShop.Controllers;
 using Data;
 using Microsoft.Extensions.Logging;
-using Domain;
-using Product = Codecool.CodecoolShop.Models.Product;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Codecool.CodecoolShop.Services
 {
