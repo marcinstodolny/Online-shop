@@ -1,5 +1,4 @@
 using System;
-<<<<<<< HEAD
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -10,35 +9,16 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Services;
-=======
-using Codecool.CodecoolShop.Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System.Diagnostics;
-using System.Linq;
->>>>>>> origin/remove-daos
+using Data;
+using Domain;
+using Microsoft.EntityFrameworkCore;
+using Product = Domain.Product;
 
 namespace Codecool.CodecoolShop.Controllers
 {
     public class ProductController : Controller
     {
         private readonly ILogger<ProductController> _logger;
-<<<<<<< HEAD
-        public ProductService ProductService { get; set; }
-
-        public ProductController(ILogger<ProductController> logger)
-        {
-            _logger = logger;
-            ProductService = new ProductService(
-                ProductDaoMemory.GetInstance(),
-                ProductCategoryDaoMemory.GetInstance());
-        }
-
-        public IActionResult Index()
-        {
-            var products = ProductService.GetProductsForCategory(1);
-            return View(products.ToList());
-=======
         private IProductService _productService;
         public ProductController(ILogger<ProductController> logger, IProductService productService)
         {
@@ -68,7 +48,6 @@ namespace Codecool.CodecoolShop.Controllers
             }
 
             return View(products);
->>>>>>> origin/remove-daos
         }
 
         public IActionResult Privacy()
@@ -79,15 +58,7 @@ namespace Codecool.CodecoolShop.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-<<<<<<< HEAD
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
-=======
-            throw new NotImplementedException();
-            //View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-    }
-}
->>>>>>> origin/remove-daos

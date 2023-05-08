@@ -449,9 +449,6 @@ healthchecksdb
 MigrationBackup/
 
 # End of https://www.gitignore.io/api/visualstudio,jetbrains+all,visualstudiocode
-<<<<<<< HEAD
-=======
 
 log.txt
 log.json
->>>>>>> origin/remove-daos
