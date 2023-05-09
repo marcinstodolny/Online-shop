@@ -6,6 +6,8 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 using Domain.Payments;
+using System.Net.Mail;
+using System.Net;
 
 namespace Codecool.CodecoolShop.Controllers
 {
@@ -76,13 +78,45 @@ namespace Codecool.CodecoolShop.Controllers
 
         public IActionResult Confirmation()
         {
+            var order = HttpContext.Session.GetObjectFromJson<Order>("orderDetails");
             var cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart") ?? new List<Item>();
             ViewBag.cart = cart;
+            ViewBag.total = cart.Sum(item => item.Product.DefaultPrice * item.Quantity);
             //var order = _orderService.GetAllOrders();
-            var order = HttpContext.Session.GetObjectFromJson<Order>("orderDetails");
+
             HttpContext.Session.Remove("cart");
             HttpContext.Session.Remove("orderDetails");
+
+            // Send the email confirmation
+            // SendEmailConfirmation(order); this is an example to configure SMTP client instance to send confirmation email
+
+            _orderService.AddOrder(order);
+
             return View(order);
+        }
+
+        private void SendEmailConfirmation(Order order)
+        {
+            // Create a new SmtpClient instance with your SMTP server details
+            var client = new SmtpClient("test.smtp.server.com", 587)
+            {
+                Credentials = new NetworkCredential("test-username", "test-password"),
+                EnableSsl = true
+            };
+
+            // Create a new MailMessage instance
+            var message = new MailMessage();
+
+            // Set the sender and recipient email addresses
+            message.From = new MailAddress("test@codecoolshop.com");
+            message.To.Add(new MailAddress(order.Email));
+
+            // Set the subject and body of the email
+            message.Subject = "Order Confirmation";
+            message.Body = $"Dear {order.Name},\n\nThank you for your order. Your order has been confirmed.\n\nShipping Address:\n{order.ShippingAddress}\n\nTotal amount: {ViewBag.total:C}\n\nBest regards,\nYour Company";
+
+            // Send the email using the SmtpClient
+            client.Send(message);
         }
     }
 }

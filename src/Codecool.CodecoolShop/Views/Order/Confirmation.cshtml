@@ -3,10 +3,47 @@
     ViewData["Title"] = "Confirmation";
 }
 @model Domain.Order
-<p>Payment has been confirmed</p>
-<p>Order ID : @Model.Id</p>
-<p>Name : @Model.Name</p>
-@foreach (var order in @ViewBag.cart)
-{
-    <p>@order.Product.Name</p>
-}
+
+<div class="container">
+    <h3 class="mt-4 mb-4">Payment has been confirmed for:</h3>
+    <div class="row">
+        <div class="col-md-8">
+            @foreach (var element in ViewBag.cart)
+            {
+                <div class="d-flex mb-4 border border-secondary-subtle rounded p-3">
+                    <img src="../img/@(element.Product.Name).jpg" style="height: 100px; width: 100px;">
+                    <div class="ml-3 flex-grow-1">
+                        <h5 class="mb-1 font-weight-bold">@element.Product.Name</h5><span> Quantity: @element.Quantity</span>
+                        <div class="d-flex justify-content-end align-items-center">
+                            <span class="mr-auto">Price: @((element.Product.DefaultPrice * element.Quantity).ToString("C2", new CultureInfo("en-US")))</span>
+                            @{
+                                if (@element.Quantity > 1)
+                                {
+                                    <span class="mr-auto">(@element.Product.DefaultPrice.ToString("C2", new CultureInfo("en-US")) per item)</span>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-md-4">
+            <div class="card border border-secondary">
+                <div class="card-body">
+                    <h5 class="card-title">Total</h5>
+                    <p class="card-text">
+                        Total price: @ViewBag.total.ToString("C2", new CultureInfo("en-US"))
+                    </p>
+                    <h5 class="card-title">Shipping details</h5>
+                    <p class="card-text">
+                        <p>Name:     @Model.Name</p>
+                        <p>City:     @Model.ShippingCity</p>
+                        <p>Zip code: @Model.ShippingZipcode</p>
+                        <p>Address:  @Model.ShippingAddress</p>
+                        <p>Country:  @Model.ShippingCountry</p>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
