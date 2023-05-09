@@ -16,7 +16,11 @@ namespace Codecool.CodecoolShop.Services
         {
             _logger = logger;
             _context = context;
-            CodecoolshopContext.IfDbEmptyAddNewItems(context);
+            if (context is CodecoolshopContext) 
+            {
+                CodecoolshopContext.IfDbEmptyAddNewItems((CodecoolshopContext)context);
+            }
+            
         }
 
         public List<Domain.Product> GetAllProducts()

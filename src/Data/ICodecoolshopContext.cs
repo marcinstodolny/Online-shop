@@ -7,10 +7,5 @@ public interface ICodecoolshopContext
     DbSet<ProductCategory> ProductCategories { get; }
     DbSet<Supplier> Suppliers { get; }
     public DbSet<Order> Orders { get; set; }
-
-    public void SaveChanges()
-    {
-
-    }
 }
 
