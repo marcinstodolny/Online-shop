@@ -1,7 +1,11 @@
 ﻿using Domain;
+using Identity.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace Data
 {
@@ -237,6 +241,17 @@ namespace Data
                 context.Products.Add(appleiPadPro);
                 context.SaveChanges();
             }
+        }
+    }
+
+    public class IdentityContext : IdentityDbContext<User>
+    {
+        public DbSet<User>  Users { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = FirstAppDemo; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = True; ApplicationIntent = ReadWrite; MultiSubnetFailover = False"); 
+
         }
     }
 }

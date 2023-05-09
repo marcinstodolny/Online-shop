@@ -1,5 +1,7 @@
 using Codecool.CodecoolShop.Services;
 using Data;
+using Domain;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +14,7 @@ namespace Codecool.CodecoolShop
 {
     public class Startup
     {
-
+        
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -41,6 +43,19 @@ namespace Codecool.CodecoolShop
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICartService, CartService>();
             services.AddScoped<IOrderService, OrderService>();
+            services.AddMvc();
+
+            services.AddEntityFrameworkSqlServer()
+                .AddSqlServer()
+                .AddDbContext<CodecoolshopContext>
+                    (option => option.UseSqlServer(Configuration["database:connection"]));
+
+            services.AddIdentity<User, IdentityRole>()
+                .AddUserStore<CodecoolshopContext>();
+
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
