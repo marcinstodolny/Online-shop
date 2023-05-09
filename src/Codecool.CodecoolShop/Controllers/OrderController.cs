@@ -80,6 +80,8 @@ namespace Codecool.CodecoolShop.Controllers
             ViewBag.cart = cart;
             //var order = _orderService.GetAllOrders();
             var order = HttpContext.Session.GetObjectFromJson<Order>("orderDetails");
+            HttpContext.Session.Remove("cart");
+            HttpContext.Session.Remove("orderDetails");
             return View(order);
         }
     }
