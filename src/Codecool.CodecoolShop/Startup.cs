@@ -47,7 +47,7 @@ namespace Codecool.CodecoolShop
 
 
             services.AddEntityFrameworkSqlServer()
-                .AddSqlServer()
+                .AddSqlServer<CodecoolshopContext>((Configuration["database:connection"]))
                 .AddDbContext<CodecoolshopContext>
                     (option => option.UseSqlServer(Configuration["database:connection"]));
 
