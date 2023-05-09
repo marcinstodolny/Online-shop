@@ -10,9 +10,9 @@ namespace Codecool.CodecoolShop.Services
     {
 
         private readonly ILogger<ProductController> _logger;
-        private CodecoolshopContext _context;
+        private ICodecoolshopContext _context;
 
-        public ProductService(ILogger<ProductController> logger, CodecoolshopContext context)
+        public ProductService(ILogger<ProductController> logger, ICodecoolshopContext context)
         {
             _logger = logger;
             _context = context;

@@ -44,7 +44,7 @@ namespace Data
             base.OnModelCreating(modelBuilder);
         }
 
-        public static void IfDbEmptyAddNewItems(CodecoolshopContext context)
+        public static void IfDbEmptyAddNewItems(ICodecoolshopContext context)
         {
             if (!context.Products.Any())
             {
