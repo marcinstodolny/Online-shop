@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Data;
 using Domain;
 
 namespace Codecool.CodecoolShop.Services

@@ -1,14 +1,10 @@
-﻿using System;
-using Codecool.CodecoolShop.Helpers;
-using Data;
+﻿using Codecool.CodecoolShop.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
 using Domain;
-using Product = Domain.Product;
 using Codecool.CodecoolShop.Services;
 using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Cors.Infrastructure;
 
 namespace Codecool.CodecoolShop.Controllers
 {

@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Domain.Validators;
-using Microsoft.VisualBasic;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Domain.Payments
 {
