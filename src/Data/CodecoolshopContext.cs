@@ -1,5 +1,4 @@
 ﻿using Domain;
-using Identity.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
