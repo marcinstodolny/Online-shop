@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Data
 {
-    public class CodecoolshopContext : DbContext
+    public class CodecoolshopContext : DbContext, ICodecoolshopContext
     {
         //private const string ConnectionString = "Data Source=localhost;Database=Codecoolshop;Trust Server Certificate=true;MultipleActiveResultSets=true;Integrated Security=true";
         private readonly IConfiguration _configuration;
@@ -44,7 +44,7 @@ namespace Data
             base.OnModelCreating(modelBuilder);
         }
 
-        public static void IfDbEmptyAddNewItems(CodecoolshopContext context)
+        public static void IfDbEmptyAddNewItems(ICodecoolshopContext context)
         {
             if (!context.Products.Any())
             {
