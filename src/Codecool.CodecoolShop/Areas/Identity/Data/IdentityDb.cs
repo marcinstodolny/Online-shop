@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Codecool.CodecoolShop.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Codecool.CodecoolShop.Data
 {
-    public class IdentityDb : IdentityDbContext<IdentityUser>
+    public class IdentityDb : IdentityDbContext<Customer>
     {
         public IdentityDb(DbContextOptions<IdentityDb> options)
             : base(options)
