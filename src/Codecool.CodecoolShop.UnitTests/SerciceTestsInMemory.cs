@@ -53,7 +53,7 @@ namespace Codecool.CodecoolShop.UnitTests
             var allProducts = productService.GetAllProducts();
 
             // Assert
-            Assert.AreEqual(15, allProducts.Count);
+            Assert.AreEqual(15, allProducts.Count); //change to pre created above list intead of hard coded number 
         }
 
         [Test]
