@@ -7,5 +7,7 @@ namespace Codecool.CodecoolShop.Services
     {
         void AddOrder(Order order);
         List<Domain.Order> GetAllOrders();
+        void SaveOrderToJson(Order order);
+        void SendEmailConfirmation(Order order, string total);
     }
 }

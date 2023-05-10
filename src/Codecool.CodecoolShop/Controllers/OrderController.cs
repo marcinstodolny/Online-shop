@@ -7,11 +7,6 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 using Domain.Payments;
-using System.Net.Mail;
-using System.Net;
-using System.IO;
-using System.Text.Json;
-using Microsoft.AspNetCore.Hosting;
 
 namespace Codecool.CodecoolShop.Controllers
 {
@@ -19,13 +14,11 @@ namespace Codecool.CodecoolShop.Controllers
     {
         private readonly ILogger<ProductController> _logger;
         private IOrderService _orderService;
-        private IWebHostEnvironment _hostingEnvironment;
 
-        public OrderController(ILogger<ProductController> logger, IOrderService orderService, IWebHostEnvironment hostingEnvironment)
+        public OrderController(ILogger<ProductController> logger, IOrderService orderService)
         {
             _logger = logger;
             _orderService = orderService;
-            _hostingEnvironment = hostingEnvironment;
         }
 
         public IActionResult Checkout()
@@ -38,7 +31,7 @@ namespace Codecool.CodecoolShop.Controllers
         {
             order.CreatedAt = DateTime.Now;
             order.Status = "Checked";
-            SaveOrderToJson(order);
+            _orderService.SaveOrderToJson(order);
 
             if (order.ShippingSameAsBilling)
             {
@@ -51,7 +44,7 @@ namespace Codecool.CodecoolShop.Controllers
             {
                 order.CreatedAt = DateTime.Now;
                 order.Status = "Confirmed";
-                SaveOrderToJson(order);
+                _orderService.SaveOrderToJson(order);
 
                 HttpContext.Session.SetObjectAsJson("orderDetails", order);
                 _logger.LogInformation($"Checkout order completed for order id: {order.Id}");
@@ -85,7 +78,7 @@ namespace Codecool.CodecoolShop.Controllers
 
             order.CreatedAt = DateTime.Now;
             order.Status = "Failed payment";
-            SaveOrderToJson(order);
+            _orderService.SaveOrderToJson(order);
 
             var lastFourDigits = 4;
             var paymentMessage =
@@ -100,7 +93,7 @@ namespace Codecool.CodecoolShop.Controllers
             var order = HttpContext.Session.GetObjectFromJson<Order>("orderDetails");
             order.CreatedAt = DateTime.Now;
             order.Status = "Payed";
-            SaveOrderToJson(order);
+            _orderService.SaveOrderToJson(order);
 
             var cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart") ?? new List<Item>();
             ViewBag.cart = cart;
@@ -111,56 +104,11 @@ namespace Codecool.CodecoolShop.Controllers
             HttpContext.Session.Remove("orderDetails");
 
             // Send the email confirmation
-            // SendEmailConfirmation(order); this is an example to configure SMTP client instance to send confirmation email
+            //_orderService.SendEmailConfirmation(order, ViewBag.total); //; this is an example to configure SMTP client instance to send confirmation email
 
             _orderService.AddOrder(order);
 
             return View(order);
-        }
-
-        private void SendEmailConfirmation(Order order)
-        {
-            // Create a new SmtpClient instance with your SMTP server details
-            var client = new SmtpClient("test.smtp.server.com", 587)
-            {
-                Credentials = new NetworkCredential("test-username", "test-password"),
-                EnableSsl = true
-            };
-
-            // Create a new MailMessage instance
-            var message = new MailMessage();
-
-            // Set the sender and recipient email addresses
-            message.From = new MailAddress("test@codecoolshop.com");
-            message.To.Add(new MailAddress(order.Email));
-
-            // Set the subject and body of the email
-            message.Subject = "Order Confirmation";
-            message.Body = $"Dear {order.Name},\n\nThank you for your order. Your order has been confirmed.\n\nShipping Address:\n{order.ShippingAddress}\n\nTotal amount: {ViewBag.total:C}\n\nBest regards,\nYour Company";
-
-            // Send the email using the SmtpClient
-            client.Send(message);
-        }
-        private void SaveOrderToJson(Order order)
-        {
-            var orderId = order.Id;
-            var currentDate = DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss");
-            var fileName = $"{order.Status}_{currentDate}.json";
-            var filePath = Path.Combine(_hostingEnvironment.ContentRootPath, "OrderJsonLogFiles", fileName);
-
-            // Create the directory if it doesn't exist
-            Directory.CreateDirectory(Path.GetDirectoryName(filePath));
-
-            // Serialize the order object to JSON
-            var options = new JsonSerializerOptions { WriteIndented = true };
-            var orderJson = JsonSerializer.Serialize(order, options);
-
-            // Write the JSON data to the file using FileStream
-            using (var stream = new FileStream(filePath, FileMode.Create))
-            using (var writer = new StreamWriter(stream))
-            {
-                writer.Write(orderJson);
-            }
         }
     }
 
