@@ -31,10 +31,6 @@ namespace Codecool.CodecoolShop.Controllers
         {
             try
             {
-                order.CreatedAt = DateTime.Now;
-                order.Status = "Checked";
-                _orderService.SaveOrderToJson(order);
-
                 if (order.ShippingSameAsBilling)
                 {
                     order.ShippingAddress = order.BillingAddress;
@@ -43,20 +39,23 @@ namespace Codecool.CodecoolShop.Controllers
                     order.ShippingZipcode = order.BillingZipcode;
                 }
 
+                order.CreatedAt = DateTime.Now;
+                order.Status = "Checked";
+
                 if (ModelState.IsValid)
                 {
                     order.CreatedAt = DateTime.Now;
                     order.Status = "Confirmed";
-                    _orderService.SaveOrderToJson(order);
-
                     HttpContext.Session.SetObjectAsJson("orderDetails", order);
-
+                    _orderService.SaveOrderToJson(order);
                     _orderService.AddOrder(order);
 
                     _logger.LogInformation($"Checkout order completed for order id: {order.Id}");
                     return RedirectToAction("Payment");
                 }
+
                 _logger.LogInformation($"Checkout order not valid for order id: {order.Id}");
+                _orderService.AddOrder(order);
 
                 return View("Checkout");
             }
