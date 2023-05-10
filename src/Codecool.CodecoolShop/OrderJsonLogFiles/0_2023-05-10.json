@@ -1,0 +1,17 @@
+{
+  "Id": 0,
+  "Name": "asd",
+  "Email": "asd@asd",
+  "Phone": "123123",
+  "BillingCountry": "asd",
+  "BillingCity": "sad",
+  "BillingZipcode": "asd",
+  "BillingAddress": "asd",
+  "ShippingSameAsBilling": true,
+  "ShippingCountry": "asd",
+  "ShippingCity": "sad",
+  "ShippingZipcode": "asd",
+  "ShippingAddress": "asd",
+  "CreatedAt": "2023-05-10T09:00:22.3789288+02:00",
+  "Status": "Payed"
+}

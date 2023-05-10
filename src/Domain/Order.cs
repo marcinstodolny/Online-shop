@@ -3,6 +3,7 @@ using Domain.Validators;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Domain
 {
@@ -60,5 +61,9 @@ namespace Domain
         [DisplayName("Shipping Address")]
         [RequiredIf("ShippingSameAsBilling", false, ErrorMessage = "Shipping Address is required")]
         public string ShippingAddress { get; set; }
+
+        public DateTime CreatedAt { get; set; }
+
+        [BindNever] public string Status { get; set; } = "Unknown";
     }
 }
