@@ -38,6 +38,7 @@ namespace Codecool.CodecoolShop
                 opt.UseSqlServer(Configuration.GetConnectionString("CodecoolShopConnectionString")));
             services.AddSession();
             //services.AddSingleton(Configuration);
+            services.AddScoped<ICodecoolshopContext, CodecoolshopContext>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICartService, CartService>();
             services.AddScoped<IOrderService, OrderService>();

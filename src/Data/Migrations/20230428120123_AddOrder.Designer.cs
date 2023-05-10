@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Data.Migrations
 {
-    [DbContext(typeof(CodecoolshopContext))]
+    [DbContext(typeof(ICodecoolshopContext))]
     [Migration("20230428120123_AddOrder")]
     partial class AddOrder
     {
