@@ -7,7 +7,6 @@ namespace Data
 {
     public class CodecoolshopContext : DbContext
     {
-        //private const string ConnectionString = "Data Source=localhost;Database=Codecoolshop;Trust Server Certificate=true;MultipleActiveResultSets=true;Integrated Security=true";
         private readonly IConfiguration _configuration;
         public virtual DbSet<Product> Products { get; set; }
         //public DbSet<Cart> Carts { get; set; }
@@ -39,8 +38,6 @@ namespace Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // modelBuilder.Entity<Employee>().Property(x => x.FirstName).IsRequired().HasColumnType("varchar(60)");
-            //modelBuilder.Entity<Employee>().HasData();
             modelBuilder.Entity<Product>()
                 .Property(p => p.DefaultPrice)
                 .HasColumnType("decimal(18,2)");
@@ -77,14 +74,6 @@ namespace Data
                 context.ProductCategories.Add(tablet);
                 context.ProductCategories.Add(laptop);
                 context.ProductCategories.Add(smartphone);
-
-                // Add Cart
-                //var cart = new Cart()
-                //{
-                //    Items = new List<Item>()
-                //};
-
-                // Add products conditionally
 
                 var amazonFire = new Domain.Product
                 {

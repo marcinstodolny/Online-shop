@@ -1,7 +1,5 @@
-﻿using Codecool.CodecoolShop.Controllers;
-using Data;
+﻿using Data;
 using Domain;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,13 +13,11 @@ namespace Codecool.CodecoolShop.Services
 {
     public class OrderService : IOrderService
     {
-        private readonly ILogger<ProductController> _logger;
         private CodecoolshopContext _context;
         private IWebHostEnvironment _hostingEnvironment;
 
-        public OrderService(ILogger<ProductController> logger, CodecoolshopContext context, IWebHostEnvironment hostingEnvironment)
+        public OrderService(CodecoolshopContext context, IWebHostEnvironment hostingEnvironment)
         {
-            _logger = logger;
             _context = context;
             _hostingEnvironment = hostingEnvironment;
         }
@@ -59,7 +55,6 @@ namespace Codecool.CodecoolShop.Services
         }
         public void SaveOrderToJson(Order order)
         {
-            var orderId = order.Id;
             var currentDate = DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss");
             var fileName = $"{order.Status}_{currentDate}.json";
             var filePath = Path.Combine(_hostingEnvironment.ContentRootPath, "OrderJsonLogFiles", fileName);

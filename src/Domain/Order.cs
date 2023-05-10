@@ -42,7 +42,6 @@ namespace Domain
         [Required(ErrorMessage = "Billing Address is required")]
         public string BillingAddress { get; set; }
 
-        // Shipping address fields
         [NotMapped]
         public bool ShippingSameAsBilling { get; set; }
 

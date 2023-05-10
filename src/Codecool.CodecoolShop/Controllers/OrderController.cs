@@ -95,7 +95,7 @@ namespace Codecool.CodecoolShop.Controllers
                 if (ModelState.IsValid)
                 {
 
-                    _logger.LogError($"Payment details are correct for the credit card number {creditCard.CardNumber}");
+                    _logger.LogInformation($"Payment details are correct for the credit card number {creditCard.CardNumber}");
                     return RedirectToAction("Confirmation");
                 }
                 var order = HttpContext.Session.GetObjectFromJson<Order>("orderDetails");
@@ -108,8 +108,10 @@ namespace Codecool.CodecoolShop.Controllers
 
                 var lastFourDigits = 4;
                 var paymentMessage =
-                    $"Payment details are incorrect or invalid for the credit card ending number {creditCard.CardNumber.Substring(creditCard.CardNumber.Length - lastFourDigits)}";
-                _logger.LogError($"Payment details are incorrect or invalid for the credit card number {creditCard.CardNumber}");
+                    $"Payment details are incorrect or invalid for the credit card ending number " +
+                    $"{creditCard.CardNumber.Substring(creditCard.CardNumber.Length - lastFourDigits)}";
+
+                _logger.LogInformation($"Payment details are incorrect or invalid for the credit card number {creditCard.CardNumber}");
                 HttpContext.Session.SetObjectAsJson("paymentMessage", paymentMessage);
 
                 return RedirectToAction("Payment");
@@ -134,7 +136,8 @@ namespace Codecool.CodecoolShop.Controllers
                 var cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart") ?? new List<Item>();
                 ViewBag.cart = cart;
                 ViewBag.total = cart.Sum(item => item.Product.DefaultPrice * item.Quantity);
-                //var order = _orderService.GetAllOrders();
+
+                _logger.LogInformation($"Order id {order.Id} has been payed for");
 
                 HttpContext.Session.Remove("cart");
                 HttpContext.Session.Remove("orderDetails");

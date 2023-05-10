@@ -8,14 +8,9 @@ namespace Codecool.CodecoolShop.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly ILogger<ProductController> _logger;
         private IProductService _productService;
-        public ProductController(ILogger<ProductController> logger, IProductService productService)
+        public ProductController(IProductService productService)
         {
-            _logger = logger;
-            //ProductService = new ProductService(
-            //    ProductDaoMemory.GetInstance(),
-            //    ProductCategoryDaoMemory.GetInstance());
             _productService = productService;
         }
         public IActionResult Index(int? categoryId, int? supplierId)
