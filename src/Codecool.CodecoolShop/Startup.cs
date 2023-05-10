@@ -39,6 +39,8 @@ namespace Codecool.CodecoolShop
             services.AddControllersWithViews();
             services.AddDbContext<CodecoolshopContext>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("CodecoolShopConnectionString")));
+            services.AddIdentity<User, IdentityRole>()
+                .AddUserStore<CodecoolshopContext>();
             services.AddSession();
             //services.AddSingleton(Configuration);
             services.AddScoped<IProductService, ProductService>();
@@ -46,13 +48,12 @@ namespace Codecool.CodecoolShop
             services.AddScoped<IOrderService, OrderService>();
 
 
-            services.AddEntityFrameworkSqlServer()
-                .AddSqlServer<CodecoolshopContext>((Configuration["database:connection"]))
-                .AddDbContext<CodecoolshopContext>
-                    (option => option.UseSqlServer(Configuration["database:connection"]));
+            //services.AddEntityFrameworkSqlServer()
+            //    .AddSqlServer<CodecoolshopContext>((Configuration["database:connection"]))
+            //    .AddDbContext<CodecoolshopContext>
+            //        (option => option.UseSqlServer(Configuration["database:connection"]));
 
-            services.AddIdentity<User, IdentityRole>()
-                .AddUserStore<CodecoolshopContext>();
+
 
 
 
@@ -84,19 +85,14 @@ namespace Codecool.CodecoolShop
 
             app.UseRouting();
 
-            app.Run(async (context) =>
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
             {
-                var msg = Configuration["message"];
-                await context.Response.WriteAsync(msg);
-
-                app.UseAuthorization();
-
-                app.UseEndpoints(endpoints =>
-                {
-                    endpoints.MapControllerRoute(
-                        name: "default",
-                        pattern: "{controller=Product}/{action=Index}/{id?}");
-                });
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Product}/{action=Index}/{id?}");
+            });
 
                 //SetupInMemoryDatabases();
             });
