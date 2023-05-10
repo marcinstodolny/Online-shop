@@ -10,16 +10,13 @@ namespace Codecool.CodecoolShop.Services
     {
 
         private readonly ILogger<CartController> _logger;
-        private ICodecoolshopContext _context;
+        private CodecoolshopContext _context;
 
-        public CartService(ILogger<CartController> logger, ICodecoolshopContext context)
+        public CartService(ILogger<CartController> logger, CodecoolshopContext context)
         {
             _logger = logger;
             _context = context;
-            if (context is CodecoolshopContext)
-            {
-                CodecoolshopContext.IfDbEmptyAddNewItems((CodecoolshopContext)context);
-            }
+            CodecoolshopContext.IfDbEmptyAddNewItems(context);
         }
 
         public List<Domain.Product> GetAllProducts()

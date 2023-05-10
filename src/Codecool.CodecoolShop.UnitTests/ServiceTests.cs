@@ -4,6 +4,7 @@ using Codecool.CodecoolShop.Controllers;
 using Codecool.CodecoolShop.Services;
 using Domain;
 using Microsoft.EntityFrameworkCore;
+using Data;
 
 namespace Codecool.CodecoolShop.UnitTests
 {
@@ -13,7 +14,7 @@ namespace Codecool.CodecoolShop.UnitTests
         private Mock<DbSet<Product>> _mockProducts;
         private Mock<DbSet<ProductCategory>> _mockCategories;
         private Mock<DbSet<Supplier>> _mockSuppliers;
-        private Mock<ICodecoolshopContext> _mockContext;
+        private Mock<CodecoolshopContext> _mockContext;
 
         private void SetupMockContext<T>(Mock<DbSet<T>> mockSet, IQueryable<T> data) where T : class
         {
@@ -30,7 +31,7 @@ namespace Codecool.CodecoolShop.UnitTests
             _mockProducts = new Mock<DbSet<Product>>();
             _mockCategories = new Mock<DbSet<ProductCategory>>();
             _mockSuppliers = new Mock<DbSet<Supplier>>();
-            _mockContext = new Mock<ICodecoolshopContext>();
+            _mockContext = new Mock<CodecoolshopContext>();
 
             SetupMockContext(_mockProducts, new List<Product>{ }.AsQueryable());
 
