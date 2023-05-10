@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
 
 namespace Data
 {
@@ -18,10 +18,15 @@ namespace Data
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<User> Users { get; set; }
+        public CodecoolshopContext()
+        {
+
+        }
         public CodecoolshopContext(DbContextOptions options, IConfiguration configuration) : base(options)
         {
             _configuration = configuration;
         }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
