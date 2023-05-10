@@ -34,6 +34,7 @@ namespace Codecool.CodecoolShop
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddRazorPages();
             services.AddDbContext<CodecoolshopContext>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("CodecoolShopConnectionString")));
             services.AddSession();
@@ -42,6 +43,7 @@ namespace Codecool.CodecoolShop
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICartService, CartService>();
             services.AddScoped<IOrderService, OrderService>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -70,10 +72,12 @@ namespace Codecool.CodecoolShop
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapRazorPages();
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Product}/{action=Index}/{id?}");
             });
+            
 
             //SetupInMemoryDatabases();
         }
