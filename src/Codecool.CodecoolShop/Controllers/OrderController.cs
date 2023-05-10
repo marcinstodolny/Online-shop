@@ -42,6 +42,7 @@ namespace Codecool.CodecoolShop.Controllers
                     order.ShippingCountry = order.BillingCountry;
                     order.ShippingZipcode = order.BillingZipcode;
                 }
+
                 if (ModelState.IsValid)
                 {
                     order.CreatedAt = DateTime.Now;
@@ -49,6 +50,9 @@ namespace Codecool.CodecoolShop.Controllers
                     _orderService.SaveOrderToJson(order);
 
                     HttpContext.Session.SetObjectAsJson("orderDetails", order);
+
+                    _orderService.AddOrder(order);
+
                     _logger.LogInformation($"Checkout order completed for order id: {order.Id}");
                     return RedirectToAction("Payment");
                 }
@@ -100,6 +104,8 @@ namespace Codecool.CodecoolShop.Controllers
                 order.CreatedAt = DateTime.Now;
                 order.Status = "Failed payment";
                 _orderService.SaveOrderToJson(order);
+
+                _orderService.AddOrder(order);
 
                 var lastFourDigits = 4;
                 var paymentMessage =
