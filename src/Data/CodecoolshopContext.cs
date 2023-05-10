@@ -5,18 +5,22 @@ using Microsoft.Extensions.Logging;
 
 namespace Data
 {
-    public class CodecoolshopContext : DbContext, ICodecoolshopContext
+    public class CodecoolshopContext : DbContext
     {
         //private const string ConnectionString = "Data Source=localhost;Database=Codecoolshop;Trust Server Certificate=true;MultipleActiveResultSets=true;Integrated Security=true";
         private readonly IConfiguration _configuration;
-        public DbSet<Product> Products { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
         //public DbSet<Cart> Carts { get; set; }
-        public DbSet<ProductCategory> ProductCategories { get; set; }
-        public DbSet<Supplier> Suppliers { get; set; }
+        public virtual DbSet<ProductCategory> ProductCategories { get; set; }
+        public virtual DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Order> Orders { get; set; }
         public CodecoolshopContext(DbContextOptions options, IConfiguration configuration) : base(options)
         {
             _configuration = configuration;
+        }
+
+        public CodecoolshopContext()
+        {
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

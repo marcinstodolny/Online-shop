@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Data.Migrations
 {
-    [DbContext(typeof(ICodecoolshopContext))]
+    [DbContext(typeof(CodecoolshopContext))]
     [Migration("20230420100643_withoutProductList")]
     partial class withoutProductList
     {
