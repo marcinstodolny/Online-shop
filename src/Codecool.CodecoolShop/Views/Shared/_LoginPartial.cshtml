@@ -1,8 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using Codecool.CodecoolShop.Areas.Identity.Data
 
-@inject SignInManager<Customer> SignInManager
-@inject UserManager<Customer> UserManager
+@inject SignInManager<ShopCustomer> SignInManager
+@inject UserManager<ShopCustomer> UserManager
+
 
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))

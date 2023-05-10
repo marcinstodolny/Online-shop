@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Codecool.CodecoolShop.Data
 {
-    public class IdentityDb : IdentityDbContext<Customer>
+    public class IdentityDb : IdentityDbContext<ShopCustomer>
     {
         public IdentityDb(DbContextOptions<IdentityDb> options)
             : base(options)

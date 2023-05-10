@@ -1,7 +1,11 @@
+using Codecool.CodecoolShop.Areas.Identity.Data;
+using Codecool.CodecoolShop.Data;
+using Codecool.CodecoolShop.Migrations;
 using Codecool.CodecoolShop.Services;
 using Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -34,7 +38,6 @@ namespace Codecool.CodecoolShop
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddRazorPages();
             services.AddDbContext<CodecoolshopContext>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("CodecoolShopConnectionString")));
             services.AddSession();

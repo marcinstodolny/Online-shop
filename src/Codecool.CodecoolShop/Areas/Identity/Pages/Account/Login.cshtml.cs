@@ -18,13 +18,13 @@ namespace Codecool.CodecoolShop.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class LoginModel : PageModel
     {
-        private readonly UserManager<Customer> _userManager;
-        private readonly SignInManager<Customer> _signInManager;
+        private readonly UserManager<ShopCustomer> _userManager;
+        private readonly SignInManager<ShopCustomer> _signInManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<Customer> signInManager, 
+        public LoginModel(SignInManager<ShopCustomer> signInManager, 
             ILogger<LoginModel> logger,
-            UserManager<Customer> userManager)
+            UserManager<ShopCustomer> userManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
