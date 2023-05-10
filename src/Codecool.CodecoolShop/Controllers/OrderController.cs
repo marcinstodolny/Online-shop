@@ -144,8 +144,8 @@ namespace Codecool.CodecoolShop.Controllers
         private void SaveOrderToJson(Order order)
         {
             var orderId = order.Id;
-            var currentDate = DateTime.Now.ToString("yyyy-MM-dd");
-            var fileName = $"{orderId}_{currentDate}.json";
+            var currentDate = DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss");
+            var fileName = $"{order.Status}_{currentDate}.json";
             var filePath = Path.Combine(_hostingEnvironment.ContentRootPath, "OrderJsonLogFiles", fileName);
 
             // Create the directory if it doesn't exist
