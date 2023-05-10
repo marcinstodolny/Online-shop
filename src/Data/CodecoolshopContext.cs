@@ -17,6 +17,7 @@ namespace Data
         public DbSet<ProductCategory> ProductCategories { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<User> Users { get; set; }
         public CodecoolshopContext(DbContextOptions options, IConfiguration configuration) : base(options)
         {
             _configuration = configuration;
@@ -243,14 +244,14 @@ namespace Data
         }
     }
 
-    public class IdentityContext : IdentityDbContext<User>
-    {
-        public DbSet<User>  Users { get; set; }
+    //public class IdentityContext : IdentityDbContext<User>
+    //{
+    //    public DbSet<User> Users { get; set; }
 
-        protected void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = FirstAppDemo; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = True; ApplicationIntent = ReadWrite; MultiSubnetFailover = False"); 
+    //    protected void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //    {
+    //        optionsBuilder.UseSqlServer("Data Source = (localdb)\\MSSQLLocalDB; Initial Catalog = FirstAppDemo; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = True; ApplicationIntent = ReadWrite; MultiSubnetFailover = False"); 
 
-        }
-    }
+    //    }
+    //}
 }
