@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Codecool.CodecoolShop.Data
 {
-    public class CodecoolCodecoolShopContext : IdentityDbContext<IdentityUser>
+    public class IdentityDb : IdentityDbContext<IdentityUser>
     {
-        public CodecoolCodecoolShopContext(DbContextOptions<CodecoolCodecoolShopContext> options)
+        public IdentityDb(DbContextOptions<IdentityDb> options)
             : base(options)
         {
         }

@@ -15,12 +15,12 @@ namespace Codecool.CodecoolShop.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
-                services.AddDbContext<CodecoolCodecoolShopContext>(options =>
+                services.AddDbContext<IdentityDb>(options =>
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("CodecoolCodecoolShopContextConnection")));
 
                 services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<CodecoolCodecoolShopContext>();
+                    .AddEntityFrameworkStores<IdentityDb>();
             });
         }
     }
