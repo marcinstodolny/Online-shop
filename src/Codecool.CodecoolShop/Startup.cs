@@ -80,10 +80,10 @@ namespace Codecool.CodecoolShop
 
 
             app.UseSerilogRequestLogging();
+            
+            app.UseRouting();
 
             app.UseAuthentication();
-
-            app.UseRouting();
 
             app.UseAuthorization();
 
@@ -95,7 +95,7 @@ namespace Codecool.CodecoolShop
             });
 
                 //SetupInMemoryDatabases();
-            });
+            
 
             //private void SetupInMemoryDatabases()
             //{
