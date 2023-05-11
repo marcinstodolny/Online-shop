@@ -33,11 +33,11 @@ namespace Codecool.CodecoolShop.Controllers
         {
             _cartService.GetProductCategories();
             _cartService.GetSuppliers();
-            if (_cartService.FindProductBy(id) == null) return RedirectToAction("Index");
+            if (_cartService.FindProductById(id) == null) return RedirectToAction("Index");
             if (HttpContext.Session.GetObjectFromJson<List<Item>>("cart") == null)
             {
                 List<Item> cart = new List<Item>();
-                cart.Add(new Item { Product = _cartService.FindProductBy(id), Quantity = 1 });
+                cart.Add(new Item { Product = _cartService.FindProductById(id), Quantity = 1 });
                 HttpContext.Session.SetObjectAsJson("cart", cart);
             }
             else
@@ -50,7 +50,7 @@ namespace Codecool.CodecoolShop.Controllers
                 }
                 else
                 {
-                    cart.Add(new Item { Product = _cartService.FindProductBy(id), Quantity = 1 });
+                    cart.Add(new Item { Product = _cartService.FindProductById(id), Quantity = 1 });
                 }
                 HttpContext.Session.SetObjectAsJson("cart", cart);
 

@@ -11,6 +11,6 @@ namespace Codecool.CodecoolShop.Services
         List<Supplier> GetSuppliers();
         List<Product> GetProductsByCategory(int categoryId);
         List<Product> GetProductsBySupplier(int supplierId);
-        Product FindProductBy(string id);
+        Product FindProductById(string id);
     }
 }

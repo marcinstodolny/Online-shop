@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Codecool.CodecoolShop.Controllers;
 using Data;
@@ -49,14 +50,14 @@ namespace Codecool.CodecoolShop.Services
             return products;
         }
 
-        public Domain.Product FindProductBy(string id)
+        public Domain.Product FindProductById(string id)
         {
             if (_context.Products.Any(product => product.Id.ToString() == id))
             {
                 return _context.Products.First(product => product.Id.ToString() == id);
             }
-
-            return null;
+            _logger.LogInformation($"There is no product with id {id}");
+            throw new ArgumentException("Wrong Id");
         }
     }
 }
