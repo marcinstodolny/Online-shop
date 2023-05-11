@@ -41,12 +41,12 @@ namespace Codecool.CodecoolShop
             services.AddControllersWithViews();
             services.AddDbContext<CodecoolshopContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("CodecoolShopConnectionString")));
             services.AddSession();
+            services.Configure<EmailContext>(Configuration.GetSection("Email"));
             services.AddTransient<IEmailSender, EmailSender>();
             //services.AddSingleton(Configuration);
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICartService, CartService>();
             services.AddScoped<IOrderService, OrderService>();
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

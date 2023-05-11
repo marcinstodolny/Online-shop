@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace Codecool.CodecoolShop.Services
 {
@@ -18,21 +19,13 @@ namespace Codecool.CodecoolShop.Services
     {
         private CodecoolshopContext _context;
         private IWebHostEnvironment _hostingEnvironment;
-        private string _emailUsername { get; }
-        private string _emailPassword { get; }
-        private string _emailAddress { get; }
-        private string _emailSmtpAddress { get; }
-        private int _emailSmtpPort { get; }
+        private readonly EmailContext _emailContext;
 
-        public OrderService(CodecoolshopContext context, IWebHostEnvironment hostingEnvironment, IConfiguration configuration)
+        public OrderService(CodecoolshopContext context, IWebHostEnvironment hostingEnvironment, IOptions<EmailContext> emailContext)
         {
             _context = context;
             _hostingEnvironment = hostingEnvironment;
-            _emailUsername = configuration["Email:Username"];
-            _emailPassword = configuration["Email:Password"];
-            _emailAddress = configuration["Email:Address"];
-            _emailSmtpAddress = configuration["Email:Smtp"];
-            _emailSmtpPort = int.Parse(configuration["Email:Port"]);
+            _emailContext = emailContext.Value;
         }
 
         public void AddOrder(Order order)
@@ -46,9 +39,9 @@ namespace Codecool.CodecoolShop.Services
         public void SendEmailConfirmation(Order order, string total)
         {
             // Create a new SmtpClient instance with your SMTP server details
-            var client = new SmtpClient(_emailSmtpAddress, _emailSmtpPort)
+            var client = new SmtpClient(_emailContext.Smtp, _emailContext.Port)
             {
-                Credentials = new NetworkCredential(_emailUsername, _emailPassword),
+                Credentials = new NetworkCredential(_emailContext.Username, _emailContext.Password),
                 EnableSsl = true
             };
 
@@ -56,7 +49,7 @@ namespace Codecool.CodecoolShop.Services
             var message = new MailMessage();
 
             // Set the sender and recipient email addresses
-            message.From = new MailAddress(_emailAddress);
+            message.From = new MailAddress(_emailContext.Address);
             message.To.Add(new MailAddress(order.Email));
 
             // Set the subject and body of the email
