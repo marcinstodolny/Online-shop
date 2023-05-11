@@ -21,8 +21,9 @@ namespace Codecool.CodecoolShop.Areas.Identity
                         context.Configuration.GetConnectionString("CodecoolCodecoolShopContextConnection")));
 
                 services.AddRazorPages();
-                services.AddDefaultIdentity<ShopCustomer>(options => options.SignIn.RequireConfirmedAccount = false)
-                    .AddEntityFrameworkStores<IdentityDb>().AddDefaultTokenProviders();
+                services.AddDefaultIdentity<ShopCustomer>(options => options.SignIn.RequireConfirmedEmail = false)
+                    .AddEntityFrameworkStores<IdentityDb>()
+                    .AddDefaultTokenProviders();
             });
         }
     }
