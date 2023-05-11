@@ -39,10 +39,9 @@ namespace Codecool.CodecoolShop
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<CodecoolshopContext>(opt =>
-                opt.UseSqlServer(Configuration.GetConnectionString("CodecoolShopConnectionString")));
+            services.AddDbContext<CodecoolshopContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("CodecoolShopConnectionString")));
             services.AddSession();
-            //services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<IEmailSender, EmailSender>();
             //services.AddSingleton(Configuration);
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICartService, CartService>();

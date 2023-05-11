@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Codecool.CodecoolShop.Controllers;
+using Codecool.CodecoolShop.Data;
 using Data;
 using Microsoft.Extensions.Logging;
 
