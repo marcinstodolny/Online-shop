@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Moq;
-using NSubstitute.ExceptionExtensions;
 
 namespace Codecool.CodecoolShop.UnitTests
 {
@@ -125,6 +124,7 @@ namespace Codecool.CodecoolShop.UnitTests
             // Assert
             Assert.IsEmpty(allProducts);
         }
+
         [Test]
         public void GetProductsById_ReturnProduct()
         {
