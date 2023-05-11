@@ -1,5 +1,6 @@
 ﻿using Domain;
 using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
 
 namespace Codecool.CodecoolShop.Services
 {

@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 using Domain.Payments;
+using Microsoft.Extensions.Configuration;
 
 namespace Codecool.CodecoolShop.Controllers
 {
@@ -137,13 +138,11 @@ namespace Codecool.CodecoolShop.Controllers
                 ViewBag.cart = cart;
                 ViewBag.total = cart.Sum(item => item.Product.DefaultPrice * item.Quantity);
 
-                _logger.LogInformation($"Order id {order.Id} has been payed for");
+                _logger.LogInformation($"Order id {order.Id} has been payed for at {order.CreatedAt}");
+                _orderService.SendEmailConfirmation(order, ViewBag.total.ToString());
 
                 HttpContext.Session.Remove("cart");
                 HttpContext.Session.Remove("orderDetails");
-
-                // Send the email confirmation
-                //_orderService.SendEmailConfirmation(order, ViewBag.total); //; this is an example to configure SMTP client instance to send confirmation email
 
                 _orderService.AddOrder(order);
 
