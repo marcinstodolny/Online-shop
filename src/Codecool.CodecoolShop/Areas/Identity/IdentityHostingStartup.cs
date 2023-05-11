@@ -4,6 +4,7 @@ using Codecool.CodecoolShop.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,10 +21,11 @@ namespace Codecool.CodecoolShop.Areas.Identity
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("CodecoolCodecoolShopContextConnection")));
 
+                
                 services.AddRazorPages();
                 services.AddDefaultIdentity<ShopCustomer>(options => options.SignIn.RequireConfirmedEmail = false)
                     .AddEntityFrameworkStores<IdentityDb>()
-                    .AddDefaultTokenProviders();
+                .AddDefaultTokenProviders();
             });
         }
     }
