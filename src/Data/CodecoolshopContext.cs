@@ -14,6 +14,9 @@ namespace Data
         public virtual DbSet<ProductCategory> ProductCategories { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public CodecoolshopContext()
+        {
+        }
         public CodecoolshopContext(DbContextOptions options, IConfiguration configuration) : base(options)
         {
             _configuration = configuration;
