@@ -15,11 +15,13 @@ namespace Codecool.CodecoolShop.Controllers
     {
         private readonly ILogger<ProductController> _logger;
         private IOrderService _orderService;
+        private IEmailService _emailService;
 
-        public OrderController(ILogger<ProductController> logger, IOrderService orderService)
+        public OrderController(ILogger<ProductController> logger, IOrderService orderService, IEmailService emailService)
         {
             _logger = logger;
             _orderService = orderService;
+            _emailService = emailService;
         }
 
         public IActionResult Checkout()
@@ -139,7 +141,7 @@ namespace Codecool.CodecoolShop.Controllers
                 ViewBag.total = cart.Sum(item => item.Product.DefaultPrice * item.Quantity);
 
                 _logger.LogInformation($"Order id {order.Id} has been payed for at {order.CreatedAt}");
-                _orderService.SendEmailConfirmation(order, ViewBag.total.ToString());
+                _emailService.SendEmailConfirmation(order, ViewBag.total.ToString());
 
                 HttpContext.Session.Remove("cart");
                 HttpContext.Session.Remove("orderDetails");

@@ -44,6 +44,7 @@ namespace Codecool.CodecoolShop
             services.Configure<EmailContext>(Configuration.GetSection("Email"));
             services.AddTransient<IEmailSender, EmailSender>();
             //services.AddSingleton(Configuration);
+            services.AddTransient<IEmailService, EmailService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICartService, CartService>();
             services.AddScoped<IOrderService, OrderService>();
