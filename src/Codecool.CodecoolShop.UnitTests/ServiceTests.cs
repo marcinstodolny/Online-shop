@@ -59,13 +59,10 @@ namespace Codecool.CodecoolShop.UnitTests
         public void GetAllProducts_ReturnsExpectedProductCount()
         {
             // Arrange
-            var products = GenerateRandomEntities<Product>(2, 5).AsQueryable();
-
-            SetupMockContext(_mockProducts, products);
-            
-            var productList = products.ToList();
+            var productList = GenerateRandomEntities<Product>(2, 5);
+            SetupMockContext(_mockProducts, productList.AsQueryable());
             var productService = new ProductService(_mockLogger.Object, _mockContext.Object);
-            
+
             // Act
             var allProducts = productService.GetAllProducts();
 
@@ -77,11 +74,8 @@ namespace Codecool.CodecoolShop.UnitTests
         public void GetAllProducts_ReturnsExpectedProducts()
         {
             // Arrange
-            var products = GenerateRandomEntities<Product>(2, 5).AsQueryable();
-
-            SetupMockContext(_mockProducts, products);
-
-            var productList = products.ToList();
+            var productList = GenerateRandomEntities<Product>(2, 5);
+            SetupMockContext(_mockProducts, productList.AsQueryable());
             var productService = new ProductService(_mockLogger.Object, _mockContext.Object);
 
             // Act
@@ -103,42 +97,36 @@ namespace Codecool.CodecoolShop.UnitTests
         public void GetProductCategories_ReturnsExpectedCategoryCount()
         {
             // Arrange
-            var categories = GenerateRandomEntities<ProductCategory>(2, 5).AsQueryable();
-
-            SetupMockContext(_mockCategories, categories);
-
-            var categoriestList = categories.ToList();
+            var categoryList = GenerateRandomEntities<ProductCategory>(2, 5);
+            SetupMockContext(_mockCategories, categoryList.AsQueryable());
             var productService = new ProductService(_mockLogger.Object, _mockContext.Object);
 
             // Act
             var allCategories = productService.GetProductCategories();
 
             // Assert
-            Assert.That(allCategories, Has.Count.EqualTo(categoriestList.Count));
+            Assert.That(allCategories, Has.Count.EqualTo(categoryList.Count));
         }
 
         [Test]
         public void GetProductCategories_ReturnsExpectedCategories()
         {
             // Arrange
-            var categories = GenerateRandomEntities<ProductCategory>(2, 5).AsQueryable();
-
-            SetupMockContext(_mockCategories, categories);
-
-            var categoriesList = categories.ToList();
+            var categoryList = GenerateRandomEntities<ProductCategory>(2, 5);
+            SetupMockContext(_mockCategories, categoryList.AsQueryable());
             var productService = new ProductService(_mockLogger.Object, _mockContext.Object);
 
             // Act
             var allCategories = productService.GetProductCategories();
 
             // Assert
-            for (int i = 0; i < categoriesList.Count; i++)
+            for (int i = 0; i < categoryList.Count; i++)
             {
                 Assert.Multiple(() =>
                 {
-                    Assert.That(allCategories[i].Id, Is.EqualTo(categoriesList[i].Id));
-                    Assert.That(allCategories[i].Name, Is.EqualTo(categoriesList[i].Name));
-                    Assert.That(allCategories[i].Description, Is.EqualTo(categoriesList[i].Description));
+                    Assert.That(allCategories[i].Id, Is.EqualTo(categoryList[i].Id));
+                    Assert.That(allCategories[i].Name, Is.EqualTo(categoryList[i].Name));
+                    Assert.That(allCategories[i].Description, Is.EqualTo(categoryList[i].Description));
                 });
             }
         }
@@ -147,11 +135,8 @@ namespace Codecool.CodecoolShop.UnitTests
         public void GetSuppliers_ReturnsExpectedSupplierCount()
         {
             // Arrange
-            var suppliers = GenerateRandomEntities<Supplier>(2, 5).AsQueryable();
-
-            SetupMockContext(_mockSuppliers, suppliers);
-
-            var supplierList = suppliers.ToList();
+            var supplierList = GenerateRandomEntities<Supplier>(2, 5);
+            SetupMockContext(_mockSuppliers, supplierList.AsQueryable());
             var productService = new ProductService(_mockLogger.Object, _mockContext.Object);
 
             // Act
@@ -165,11 +150,8 @@ namespace Codecool.CodecoolShop.UnitTests
         public void GetSuppliers_ReturnsExpectedSuppliers()
         {
             // Arrange
-            var suppliers = GenerateRandomEntities<Supplier>(2, 5).AsQueryable();
-
-            SetupMockContext(_mockSuppliers, suppliers);
-
-            var supplierList = suppliers.ToList();
+            var supplierList = GenerateRandomEntities<Supplier>(2, 5);
+            SetupMockContext(_mockSuppliers, supplierList.AsQueryable());
             var productService = new ProductService(_mockLogger.Object, _mockContext.Object);
 
             // Act
