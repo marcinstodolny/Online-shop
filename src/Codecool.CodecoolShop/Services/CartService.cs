@@ -4,6 +4,7 @@ using System.Linq;
 using Codecool.CodecoolShop.Controllers;
 using Codecool.CodecoolShop.Data;
 using Data;
+using Domain;
 using Microsoft.Extensions.Logging;
 
 namespace Codecool.CodecoolShop.Services
@@ -59,6 +60,17 @@ namespace Codecool.CodecoolShop.Services
             }
             _logger.LogInformation($"There is no product with id {id}");
             throw new ArgumentException("Wrong Id");
+        }
+
+        public bool SaveCartToDb(string UserId, string items)
+        {
+            var cart = new Cart();
+            cart.UserId = UserId;
+            cart.ItemsJson = items;
+                
+            _context.Carts.Add(cart);
+            _context.SaveChanges();
+            return true;
         }
     }
 }

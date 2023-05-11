@@ -9,7 +9,7 @@ namespace Data
     {
         private readonly IConfiguration _configuration;
         public virtual DbSet<Product> Products { get; set; }
-        //public DbSet<Cart> Carts { get; set; }
+        public DbSet<Cart> Carts { get; set; }
         public virtual DbSet<ProductCategory> ProductCategories { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Order> Orders { get; set; }

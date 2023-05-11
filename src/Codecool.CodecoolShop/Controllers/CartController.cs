@@ -5,6 +5,9 @@ using System.Linq;
 using Domain;
 using Codecool.CodecoolShop.Services;
 using Microsoft.Extensions.Logging;
+using System;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Codecool.CodecoolShop.Controllers
 {
@@ -104,6 +107,13 @@ namespace Codecool.CodecoolShop.Controllers
         {
             var quantity = Request.Form["quantity"].First();
             return Update(id, quantity);
+        }
+        [HttpPost]
+        public IActionResult AddCartToDb(string userId)
+        {
+            var cart = HttpContext.Session.GetString("cart");
+            _cartService.SaveCartToDb(userId, cart);
+            return RedirectToAction("Index");
         }
     }
 }

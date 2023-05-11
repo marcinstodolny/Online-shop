@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Data;
 using Domain;
 
@@ -12,5 +13,6 @@ namespace Codecool.CodecoolShop.Services
         List<Product> GetProductsByCategory(int categoryId);
         List<Product> GetProductsBySupplier(int supplierId);
         Product FindProductById(string id);
+        bool SaveCartToDb(string UserId, string items);
     }
 }

@@ -1,4 +1,6 @@
 @using System.Globalization
+@using System.Security.Claims
+
 @{
     ViewData["Title"] = "Home Page";
     var index = 1;
@@ -54,6 +56,10 @@
                     @if (ViewBag.total != 0)
                     {
                         <a asp-controller="order" asp-action="Checkout" class="btn btn-primary">Checkout</a>
+                    }
+                    @if (User.Identity?.IsAuthenticated ?? false)
+                    {
+                        <a asp-controller="cart" asp-action="AddCartToDb" asp-route-userId="@User.FindFirst(ClaimTypes.NameIdentifier).Value" method="post" class="btn btn-primary">Checkout</a>
                     }
                 </div>
             </div>
