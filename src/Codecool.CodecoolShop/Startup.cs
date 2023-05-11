@@ -6,6 +6,7 @@ using Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -41,6 +42,7 @@ namespace Codecool.CodecoolShop
             services.AddDbContext<CodecoolshopContext>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("CodecoolShopConnectionString")));
             services.AddSession();
+            //services.AddTransient<IEmailSender, EmailSender>();
             //services.AddSingleton(Configuration);
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICartService, CartService>();

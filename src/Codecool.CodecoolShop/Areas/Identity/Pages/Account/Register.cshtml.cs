@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -85,6 +84,11 @@ namespace Codecool.CodecoolShop.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+                    var subject = "Welcome to our shop! We have everything you need!";
+
+                    var message =
+                        "Hello and welcome! Please enjoy your shopping and with the code \"LubiePlacki\" you can get 15% discount on each kind of pancake pan!\n * offer available only in our stationary shops";
+                    _emailSender.SendEmailAsync(Input.Email, subject, message);
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
