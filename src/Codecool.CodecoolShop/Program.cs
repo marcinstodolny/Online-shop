@@ -15,8 +15,6 @@ namespace Codecool.CodecoolShop
                 .AddJsonFile("appsettings.json")
                 .Build();
 
-
-
             Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(configuration)
                 .CreateLogger();
@@ -33,6 +31,10 @@ namespace Codecool.CodecoolShop
             {
                 Log.CloseAndFlush();
             }
+
+
+
+
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
