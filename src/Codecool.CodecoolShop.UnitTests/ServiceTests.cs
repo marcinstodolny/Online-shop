@@ -15,6 +15,19 @@ namespace Codecool.CodecoolShop.UnitTests
         private Mock<DbSet<ProductCategory>> _mockCategories;
         private Mock<DbSet<Supplier>> _mockSuppliers;
         private Mock<CodecoolshopContext> _mockContext;
+        private readonly Random _random = new();
+
+        private List<T> GenerateRandomEntities<T>(int min, int max) where T : BaseModel, new()
+        {
+            int count = _random.Next(min, max + 1);
+            return Enumerable.Range(1, count).Select(i =>
+                new T
+                {
+                    Id = i,
+                    Name = $"Random {typeof(T).Name} {i}",
+                    Description = $"Random {typeof(T).Name} Description {i}"
+                }).ToList();
+        }
 
         private void SetupMockContext<T>(Mock<DbSet<T>> mockSet, IQueryable<T> data) where T : class
         {
@@ -34,9 +47,7 @@ namespace Codecool.CodecoolShop.UnitTests
             _mockContext = new Mock<CodecoolshopContext>();
 
             SetupMockContext(_mockProducts, new List<Product>{ }.AsQueryable());
-
             SetupMockContext(_mockCategories, new List<ProductCategory>{ }.AsQueryable());
-
             SetupMockContext(_mockSuppliers, new List<Supplier>{ }.AsQueryable());
 
             _mockContext.Setup(c => c.Products).Returns(_mockProducts.Object);
@@ -48,11 +59,7 @@ namespace Codecool.CodecoolShop.UnitTests
         public void GetAllProducts_ReturnsExpectedProductCount()
         {
             // Arrange
-            var products = new List<Product>
-            {
-                new Product { Id = 1, Name = "Product 1", Description = "Description 1"},
-                new Product { Id = 2, Name = "Product 2", Description = "Description 2"}
-            }.AsQueryable();
+            var products = GenerateRandomEntities<Product>(2, 5).AsQueryable();
 
             SetupMockContext(_mockProducts, products);
             
@@ -70,11 +77,7 @@ namespace Codecool.CodecoolShop.UnitTests
         public void GetAllProducts_ReturnsExpectedProducts()
         {
             // Arrange
-            var products = new List<Product>
-            {
-                new Product { Id = 1, Name = "Product 1", Description = "Description 1"},
-                new Product { Id = 2, Name = "Product 2", Description = "Description 2"}
-            }.AsQueryable();
+            var products = GenerateRandomEntities<Product>(2, 5).AsQueryable();
 
             SetupMockContext(_mockProducts, products);
 
@@ -91,6 +94,7 @@ namespace Codecool.CodecoolShop.UnitTests
                 {
                     Assert.That(allProducts[i].Id, Is.EqualTo(productList[i].Id));
                     Assert.That(allProducts[i].Name, Is.EqualTo(productList[i].Name));
+                    Assert.That(allProducts[i].Description, Is.EqualTo(productList[i].Description));
                 });
             }
         }
@@ -99,11 +103,7 @@ namespace Codecool.CodecoolShop.UnitTests
         public void GetProductCategories_ReturnsExpectedCategoryCount()
         {
             // Arrange
-            var categories = new List<ProductCategory>
-            {
-                new ProductCategory { Id = 1, Name = "Category 1", Description = "Description 1" },
-                new ProductCategory { Id = 2, Name = "Category 2", Description = "Description 2" }
-            }.AsQueryable();
+            var categories = GenerateRandomEntities<ProductCategory>(2, 5).AsQueryable();
 
             SetupMockContext(_mockCategories, categories);
 
@@ -121,11 +121,7 @@ namespace Codecool.CodecoolShop.UnitTests
         public void GetProductCategories_ReturnsExpectedCategories()
         {
             // Arrange
-            var categories = new List<ProductCategory>
-            {
-                new ProductCategory { Id = 1, Name = "Category 1", Description = "Description 1" },
-                new ProductCategory { Id = 2, Name = "Category 2", Description = "Description 2" }
-            }.AsQueryable();
+            var categories = GenerateRandomEntities<ProductCategory>(2, 5).AsQueryable();
 
             SetupMockContext(_mockCategories, categories);
 
@@ -142,6 +138,7 @@ namespace Codecool.CodecoolShop.UnitTests
                 {
                     Assert.That(allCategories[i].Id, Is.EqualTo(categoriesList[i].Id));
                     Assert.That(allCategories[i].Name, Is.EqualTo(categoriesList[i].Name));
+                    Assert.That(allCategories[i].Description, Is.EqualTo(categoriesList[i].Description));
                 });
             }
         }
@@ -150,11 +147,7 @@ namespace Codecool.CodecoolShop.UnitTests
         public void GetSuppliers_ReturnsExpectedSupplierCount()
         {
             // Arrange
-            var suppliers = new List<Supplier>
-            {
-                new Supplier { Id = 1, Name = "Supplier 1", Description = "Description 1" },
-                new Supplier { Id = 2, Name = "Supplier 2", Description = "Description 2" }
-            }.AsQueryable();
+            var suppliers = GenerateRandomEntities<Supplier>(2, 5).AsQueryable();
 
             SetupMockContext(_mockSuppliers, suppliers);
 
@@ -172,11 +165,7 @@ namespace Codecool.CodecoolShop.UnitTests
         public void GetSuppliers_ReturnsExpectedSuppliers()
         {
             // Arrange
-            var suppliers = new List<Supplier>
-            {
-                new Supplier { Id = 1, Name = "Supplier 1", Description = "Description 1" },
-                new Supplier { Id = 2, Name = "Supplier 2", Description = "Description 2" }
-            }.AsQueryable();
+            var suppliers = GenerateRandomEntities<Supplier>(2, 5).AsQueryable();
 
             SetupMockContext(_mockSuppliers, suppliers);
 
@@ -193,6 +182,7 @@ namespace Codecool.CodecoolShop.UnitTests
                 {
                     Assert.That(allSuppliers[i].Id, Is.EqualTo(supplierList[i].Id));
                     Assert.That(allSuppliers[i].Name, Is.EqualTo(supplierList[i].Name));
+                    Assert.That(allSuppliers[i].Description, Is.EqualTo(supplierList[i].Description));
                 });
             }
         }
