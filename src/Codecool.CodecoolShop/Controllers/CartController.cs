@@ -1,10 +1,13 @@
 ﻿using Codecool.CodecoolShop.Helpers;
+using Codecool.CodecoolShop.Services;
+using Domain;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using System.Collections.Generic;
 using System.Linq;
-using Domain;
-using Codecool.CodecoolShop.Services;
-using Microsoft.Extensions.Logging;
+using System.Security.Claims;
 
 namespace Codecool.CodecoolShop.Controllers
 {
@@ -22,15 +25,18 @@ namespace Codecool.CodecoolShop.Controllers
         [Route("index")]
         public IActionResult Index()
         {
+            LoadCart();
             var cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart") ?? new List<Item>();
             ViewBag.cart = cart;
             ViewBag.total = cart.Sum(item => item.Product.DefaultPrice * item.Quantity);
+            SaveCart();
             return View();
         }
 
         [Route("buy/{id}")]
         public IActionResult Buy(string id)
         {
+
             _cartService.GetProductCategories();
             _cartService.GetSuppliers();
             if (_cartService.FindProductById(id) == null) return RedirectToAction("Index");
@@ -55,7 +61,7 @@ namespace Codecool.CodecoolShop.Controllers
                 HttpContext.Session.SetObjectAsJson("cart", cart);
 
             }
-
+            SaveCart();
             return RedirectToAction("Index");
         }
 
@@ -66,6 +72,7 @@ namespace Codecool.CodecoolShop.Controllers
             var index = IsExist(id, cart);
             cart.RemoveAt(index);
             HttpContext.Session.SetObjectAsJson("cart", cart);
+            SaveCart();
             return RedirectToAction("Index");
         }
 
@@ -84,6 +91,7 @@ namespace Codecool.CodecoolShop.Controllers
                 cart[index].Quantity = result;
             }
             HttpContext.Session.SetObjectAsJson("cart", cart);
+            SaveCart();
             return RedirectToAction("Index");
         }
 
@@ -105,5 +113,25 @@ namespace Codecool.CodecoolShop.Controllers
             var quantity = Request.Form["quantity"].First();
             return Update(id, quantity);
         }
+
+        private void LoadCart()
+        {
+            if (!(User.Identity?.IsAuthenticated ?? false)) return;
+            var userid = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var cart = _cartService.ReadCartFromDb(userid);
+            if (!cart.IsNullOrEmpty())
+            {
+                HttpContext.Session.SetString("cart", cart);
+            }
+        }
+        private void SaveCart()
+        {
+            if (!(User.Identity?.IsAuthenticated ?? false)) return;
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var cart = HttpContext.Session.GetString("cart");
+            _cartService.SaveCartToDb(userId, cart);
+
+        }
+
     }
 }

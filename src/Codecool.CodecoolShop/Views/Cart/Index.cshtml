@@ -1,4 +1,6 @@
 @using System.Globalization
+@using System.Security.Claims
+
 @{
     ViewData["Title"] = "Home Page";
     var index = 1;
@@ -55,7 +57,7 @@
                     {
                         <a asp-controller="order" asp-action="Checkout" class="btn btn-primary">Checkout</a>
                     }
-                </div>
+                        </div>
             </div>
         </div>
     </div>

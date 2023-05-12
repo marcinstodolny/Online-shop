@@ -6,7 +6,9 @@ namespace Domain
     {
         [Key]
         public int Id { get; set; }
-        public int UserId { get; set; } //to be used latter
-        public List<Item>? Items { get; set; }
+        [Required]
+        public string UserId { get; set; }
+        [Required]
+        public string ItemsJson { get; set; }
     }
 }
