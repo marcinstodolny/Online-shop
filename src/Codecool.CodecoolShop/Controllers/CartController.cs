@@ -36,7 +36,7 @@ namespace Codecool.CodecoolShop.Controllers
         [Route("buy/{id}")]
         public IActionResult Buy(string id)
         {
-
+            LoadCart();
             _cartService.GetProductCategories();
             _cartService.GetSuppliers();
             if (_cartService.FindProductById(id) == null) return RedirectToAction("Index");
