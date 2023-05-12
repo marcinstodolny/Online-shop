@@ -14,5 +14,6 @@ namespace Codecool.CodecoolShop.Services
         List<Product> GetProductsBySupplier(int supplierId);
         Product FindProductById(string id);
         bool SaveCartToDb(string UserId, string items);
+        string ReadCartFromDb(string UserId);
     }
 }

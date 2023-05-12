@@ -8,6 +8,8 @@ using Microsoft.Extensions.Logging;
 using System;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.IdentityModel.Tokens;
+using static System.Collections.Specialized.BitVector32;
 
 namespace Codecool.CodecoolShop.Controllers
 {
@@ -108,12 +110,28 @@ namespace Codecool.CodecoolShop.Controllers
             var quantity = Request.Form["quantity"].First();
             return Update(id, quantity);
         }
-        [HttpPost]
-        public IActionResult AddCartToDb(string userId)
+        [Route("saveCart/{Userid}")]
+        public IActionResult AddCartToDb(string Userid)
         {
+            if (Userid.IsNullOrEmpty())
+            {
+                return RedirectToAction("Index");
+            }
             var cart = HttpContext.Session.GetString("cart");
-            _cartService.SaveCartToDb(userId, cart);
+            _cartService.SaveCartToDb(Userid, cart);
             return RedirectToAction("Index");
         }
+        [Route("ReadCart/{Userid}")]
+        public IActionResult ReadCartFromDb(string Userid)
+        {
+            if (Userid.IsNullOrEmpty())
+            {
+                return RedirectToAction("Index");
+            }
+            var cart = _cartService.ReadCartFromDb(Userid);
+            HttpContext.Session.SetString("cart", cart);
+            return RedirectToAction("Index");
+        }
+
     }
 }

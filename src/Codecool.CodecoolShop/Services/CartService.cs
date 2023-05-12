@@ -67,10 +67,28 @@ namespace Codecool.CodecoolShop.Services
             var cart = new Cart();
             cart.UserId = UserId;
             cart.ItemsJson = items;
-                
-            _context.Carts.Add(cart);
-            _context.SaveChanges();
+            var test = _context.Carts.Any(cart => cart.UserId == UserId);
+            if (_context.Carts.Any(cart => cart.UserId == UserId))
+            {
+                _context.Carts.First(cart => cart.UserId == UserId).ItemsJson = items;
+                _context.SaveChanges();
+            }
+            else
+            {
+                _context.Carts.Add(cart);
+                _context.SaveChanges();
+            }
+            
             return true;
+        }
+        public string ReadCartFromDb(string UserId)
+        {
+            var cart = "";
+            if (_context.Carts.Any(cart => cart.UserId == UserId))
+            {
+                cart = _context.Carts.First(cart => cart.UserId == UserId).ItemsJson;
+            }
+            return cart;
         }
     }
 }
