@@ -67,7 +67,6 @@ namespace Codecool.CodecoolShop.Services
             var cart = new Cart();
             cart.UserId = UserId;
             cart.ItemsJson = items;
-            var test = _context.Carts.Any(cart => cart.UserId == UserId);
             if (_context.Carts.Any(cart => cart.UserId == UserId))
             {
                 _context.Carts.First(cart => cart.UserId == UserId).ItemsJson = items;
