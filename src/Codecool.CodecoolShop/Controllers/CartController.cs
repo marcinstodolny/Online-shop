@@ -24,18 +24,25 @@ namespace Codecool.CodecoolShop.Controllers
             _cartService = cartService;
             _logger = logger;
         }
+        [Route("index/{UserId}")]
         [Route("index")]
-        public IActionResult Index()
+        public IActionResult Index(string UserId = "")
         {
+            LoadCart(UserId);
+            
             var cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart") ?? new List<Item>();
             ViewBag.cart = cart;
             ViewBag.total = cart.Sum(item => item.Product.DefaultPrice * item.Quantity);
+            SaveCart(UserId);
             return View();
         }
 
         [Route("buy/{id}")]
-        public IActionResult Buy(string id)
+        [Route("buy/{id}/{UserId}")]
+        public IActionResult Buy(string id, string UserId = "")
         {
+            LoadCart(UserId);
+            
             _cartService.GetProductCategories();
             _cartService.GetSuppliers();
             if (_cartService.FindProductById(id) == null) return RedirectToAction("Index");
@@ -61,6 +68,7 @@ namespace Codecool.CodecoolShop.Controllers
 
             }
 
+            SaveCart(UserId);
             return RedirectToAction("Index");
         }
 
@@ -110,6 +118,7 @@ namespace Codecool.CodecoolShop.Controllers
             var quantity = Request.Form["quantity"].First();
             return Update(id, quantity);
         }
+
         [Route("saveCart/{Userid}")]
         public IActionResult AddCartToDb(string Userid)
         {
@@ -121,6 +130,7 @@ namespace Codecool.CodecoolShop.Controllers
             _cartService.SaveCartToDb(Userid, cart);
             return RedirectToAction("Index");
         }
+
         [Route("ReadCart/{Userid}")]
         public IActionResult ReadCartFromDb(string Userid)
         {
@@ -131,6 +141,25 @@ namespace Codecool.CodecoolShop.Controllers
             var cart = _cartService.ReadCartFromDb(Userid);
             HttpContext.Session.SetString("cart", cart);
             return RedirectToAction("Index");
+        }
+
+        private void LoadCart(string Userid)
+        {
+            if (Userid.IsNullOrEmpty())
+            {
+                return;
+            }
+            var cart = _cartService.ReadCartFromDb(Userid);
+            HttpContext.Session.SetString("cart", cart);
+        }
+        private void SaveCart(string UserId)
+        {
+            if (UserId.IsNullOrEmpty())
+            {
+                return;
+            }
+            var cart = HttpContext.Session.GetString("cart");
+            _cartService.SaveCartToDb(UserId, cart);
         }
 
     }

@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -32,10 +34,21 @@
                             <partial name ="_LoginPartial.cshtml"/>
                         </li>
                         <li>
-                            <a class="nav-link cart-link" asp-area="" asp-controller="cart" asp-action="Index">
-                                <img src="~/img/shopping-cart-icon.svg" alt="Cart" style="width: 20px; height: 20px;"/>
-                                Cart
-                            </a>
+                            @if (User.Identity?.IsAuthenticated ?? false)
+                            {
+                                <a class="nav-link cart-link" asp-area="" asp-controller="cart" asp-action="Index" asp-route-Userid="@User.FindFirst(ClaimTypes.NameIdentifier).Value">
+                                    <img src="~/img/shopping-cart-icon.svg" alt="Cart" style="width: 20px; height: 20px;"/>
+                                    Cart
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="nav-link cart-link" asp-area="" asp-controller="cart" asp-action="Index">
+                                    <img src="~/img/shopping-cart-icon.svg" alt="Cart" style="width: 20px; height: 20px;"/>
+                                    Cart
+                                </a>
+                            }
+                            
                         </li>
 
                     </ul>
