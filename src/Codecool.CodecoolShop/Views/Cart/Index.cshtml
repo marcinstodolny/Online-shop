@@ -56,17 +56,8 @@
                     @if (ViewBag.total != 0)
                     {
                         <a asp-controller="order" asp-action="Checkout" class="btn btn-primary">Checkout</a>
-                        @if (User.Identity?.IsAuthenticated ?? false)
-                        {
-                            
-                            <a asp-controller="cart" asp-action="AddCartToDb" asp-route-Userid="@User.FindFirst(ClaimTypes.NameIdentifier).Value" class="btn btn-primary">Save Cart</a>
-                        }
                     }
-                @if (User.Identity?.IsAuthenticated ?? false)
-                {
-                    <a asp-controller="cart" asp-action="ReadCartFromDb" asp-route-Userid="@User.FindFirst(ClaimTypes.NameIdentifier).Value" class="btn btn-primary">Load Cart</a>
-                }
-                </div>
+                        </div>
             </div>
         </div>
     </div>
