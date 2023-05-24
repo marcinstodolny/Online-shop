@@ -10,7 +10,7 @@ namespace Codecool.CodecoolShop.Areas.Identity.Data
         public Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
             var mail = "rysiekptysiek2@outlook.com";
-            var pw = "jzhkrvgwurqunkku";
+            var pw = "kttzziiohurjtpmg";
 
             var client = new SmtpClient("smtp-mail.outlook.com", 587)
             {
