@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Codecool.CodecoolShop.Controllers;
-using Codecool.CodecoolShop.Data;
 using Data;
 using Domain;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Codecool.CodecoolShop.Services
 {
@@ -72,7 +72,7 @@ namespace Codecool.CodecoolShop.Services
                 _context.Carts.First(cart => cart.UserId == UserId).ItemsJson = items;
                 _context.SaveChanges();
             }
-            else
+            else if (cart.ItemsJson != null)
             {
                 _context.Carts.Add(cart);
                 _context.SaveChanges();
