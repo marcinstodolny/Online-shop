@@ -16,14 +16,18 @@ Online shopping has become an integral part of our lives, and this project aims 
 - ![Visual Studio](https://img.shields.io/badge/Visual%20Studio-5C2D91.svg?style=for-the-badge&logo=visual-studio&logoColor=white)
 - ![.NET](https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white)
 - ![Microsoft SQL Server](https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white)
-- ![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
 - ![Entity Framework](https://img.shields.io/badge/Entity%20Framework-512BD4?style=for-the-badge&logo=entity-framework&logoColor=white)
+- ![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
+- ![Trello](https://img.shields.io/badge/Trello-0079BF?style=for-the-badge&logo=trello&logoColor=white)
+- ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+- ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
 
 ## Features
 
 ### User-Friendly Shopping
 
 - Browse a vast selection of products.
+- Filter and search for products easily.
 - Add items to your shopping cart with ease.
 - Secure and hassle-free checkout process.
 
@@ -32,6 +36,7 @@ Online shopping has become an integral part of our lives, and this project aims 
 - Create an account to save your information securely.
 - View your abandoned shopping cart.
 - Track your order history.
+- Receive a welcome email upon registration.
 
 ## Task Sprints
 
@@ -50,7 +55,7 @@ To get started with the Online Shop, follow these steps:
 1. Clone the repository to your local machine.
 2. Open the project in Visual Studio.
 3. Configure the database connection string in appsettings.json.
-4. Using nugget package manager apply the migration to create the database with "Update-Database" command.
+4. Use nugget package manager apply the migration to create the database with "Update-Database" command.
 5. Build and run the application.
 6. Start exploring and shopping online!
 
