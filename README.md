@@ -11,6 +11,10 @@ Online shopping has become an integral part of our lives, and this project aims 
 - Secure checkout
 - Order history tracking
 
+## Preview
+
+https://github.com/marcinstodolny/Online-shop/assets/76453068/80887229-33fa-4297-b924-55cf8f81a209
+
 ## Features
 
 ### User-Friendly Shopping
